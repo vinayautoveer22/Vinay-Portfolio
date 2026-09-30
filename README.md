@@ -1,16 +1,27 @@
-# React + Vite
+# Vinay Kumar Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio website for Vinay Kumar, a digital marketer and performance marketing specialist. It showcases services, selected campaigns, creative work, experience, skills, and contact options.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19
+- Vite 6
+- Tailwind CSS 4
 
-## React Compiler
+## Run locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```sh
+npm install
+npm run dev
+```
 
-## Expanding the Oxlint configuration
+## Build and preview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```sh
+npm run build
+npm run preview
+```
+
+The production site is generated in `dist/`. Gallery images, video posters and videos live in `public/` and are copied into `dist/` as-is; videos stream directly from their files.
+
+Netlify builds the app with `netlify.toml` (`npm run build`, publish `dist/`, Node 22).

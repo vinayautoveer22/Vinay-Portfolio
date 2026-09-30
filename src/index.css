@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap');
+@import "tailwindcss";
+@import "./App.css";
+
+/* ------------------------------------------------------------------------------
+   DESIGN TOKENS
+------------------------------------------------------------------------------ */
+
+@theme {
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #dce8ff;
+  --color-brand-200: #bdd3ff;
+  --color-brand-300: #8fb4ff;
+  --color-brand-400: #5b8fff;
+  --color-brand-500: #3b6ef6;
+  --color-brand-600: #2554e0;
+  --color-brand-700: #1d42b8;
+  --color-brand-800: #1c3791;
+  --color-brand-900: #152a66;
+
+  --color-accent: #0891b2;
+  --color-gold: #f59e0b;
+
+  --color-ink: #f4f4f5;
+  --color-ink-2: #c4c4ca;
+  --color-ink-3: #a5a6af;
+
+  --color-line: rgb(255 255 255 / 0.15);
+
+  --color-canvas: #08090b;
+  --color-surface: #151619;
+
+  --font-sans:
+    'Inter',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+
+  --font-display:
+    'Sora',
+    'Inter',
+    system-ui,
+    sans-serif;
+}
+
+/* ------------------------------------------------------------------------------
+   ROOT
+------------------------------------------------------------------------------ */
+
+:root {
+  --brand-rgb: 59 110 246;
+  --accent-rgb: 8 145 178;
+  --ink-rgb: 0 0 0;
+
+  color-scheme: dark;
+
+  font-family: var(--font-sans);
+
+  color: var(--color-ink);
+
+  background-color: var(--color-canvas);
+
+  font-synthesis: none;
+
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ------------------------------------------------------------------------------
+   IMPORTANT:
+   DESKTOP DENSITY FIX
+
+   Website is designed and reviewed at 100% browser zoom.
+
+   Tailwind mostly uses REM units, so reducing the desktop root font-size
+   proportionally reduces:
+   - typography
+   - padding
+   - gaps
+   - buttons
+   - cards
+   - container width
+   - section spacing
+
+   Mobile stays at standard 16px.
+------------------------------------------------------------------------------ */
+
+html {
+  font-size: 16px;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  scroll-padding-top: 78px;
+}
+
+/* Laptop / Desktop */
+@media (min-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Very large desktop:
+   Keep the design from becoming tiny on large monitors */
+@media (min-width: 1700px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* ------------------------------------------------------------------------------
+   BOX MODEL
+------------------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ------------------------------------------------------------------------------
+   BODY
+------------------------------------------------------------------------------ */
+
+body {
+  margin: 0;
+
+  min-width: 320px;
+
+  overflow-x: hidden;
+
+  background-color: transparent;
+
+  color: var(--color-ink);
+
+  font-family: var(--font-sans);
+}
+
+/* ------------------------------------------------------------------------------
+   PAGE BACKGROUND
+------------------------------------------------------------------------------ */
+
+body::before {
+  content: '';
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -2;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(ellipse at 50% 0%, #202124 0%, #101113 38%, #08090b 78%);
+}
+
+/* ------------------------------------------------------------------------------
+   TYPOGRAPHY
+------------------------------------------------------------------------------ */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+
+  letter-spacing: -0.03em;
+}
+
+/* Improve text readability */
+p {
+  text-wrap: pretty;
+}
+
+/* Headings look more intentional */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+/* ------------------------------------------------------------------------------
+   DESKTOP TYPOGRAPHY POLISH
+------------------------------------------------------------------------------ */
+
+@media (min-width: 1024px) {
+
+  body {
+    line-height: 1.55;
+  }
+
+  p {
+    line-height: 1.65;
+  }
+
+}
+
+/* ------------------------------------------------------------------------------
+   SELECTION
+------------------------------------------------------------------------------ */
+
+::selection {
+  background: var(--color-brand-200);
+  color: var(--color-brand-900);
+}
+
+/* ------------------------------------------------------------------------------
+   SCROLLBAR
+------------------------------------------------------------------------------ */
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(255 255 255 / 0.2);
+
+  border-radius: 999px;
+
+  border: 2px solid var(--color-canvas);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(255 255 255 / 0.34);
+}
