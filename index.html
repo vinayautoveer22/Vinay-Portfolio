@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // When opened locally via file:// from folder, seamlessly open dist/index.html
+      if (window.location.protocol === 'file:' && !/[\\/]dist[\\/]index\.html$/i.test(window.location.pathname)) {
+        window.location.replace('./dist/index.html');
+      }
+    </script>
+    <title>Vinay Kumar | Digital Marketer & Performance Marketing Specialist</title>
+    <meta name="description" content="Portfolio of Vinay Kumar - Digital Marketer & Performance Marketing Specialist with 2+ years of experience in Meta Ads, Google Ads, Automotive dealership campaigns, and AI Creative production." />
+    <meta name="author" content="Vinay Kumar" />
+    <meta property="og:title" content="Vinay Kumar | Digital Marketer & Performance Marketing Specialist" />
+    <meta property="og:description" content="Driving High-ROI Lead Generation, Multi-Brand Automotive Campaigns & AI Creative Production." />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
