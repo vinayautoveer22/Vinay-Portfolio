@@ -1,3 +1,0 @@
-@echo off
-echo Opening Vinay Kumar's Portfolio in your default browser...
-start "" "%~dp0dist\index.html"
