@@ -80,6 +80,7 @@ export default function CreativeGallery() {
 
   const [activeId, setActiveId] = useState(categories[0]?.id || '')
   const [viewer, setViewer] = useState(null)
+  const [loadedImageSrc, setLoadedImageSrc] = useState('')
   const [animatedRect, setAnimatedRect] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
 
@@ -183,6 +184,32 @@ export default function CreativeGallery() {
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [viewer, closeViewer])
+
+  useEffect(() => {
+    if (viewer?.item.type !== 'image') return
+
+    let cancelled = false
+    const fullSizeImage = new Image()
+    fullSizeImage.decoding = 'async'
+    fullSizeImage.onload = async () => {
+      try {
+        await fullSizeImage.decode()
+      } catch {
+        // Keep the already visible thumbnail if full-size decoding fails.
+      }
+
+      if (!cancelled) setLoadedImageSrc(viewer.item.src)
+    }
+    fullSizeImage.src = viewer.item.src
+
+    if (fullSizeImage.complete && fullSizeImage.naturalWidth > 0) {
+      fullSizeImage.onload()
+    }
+
+    return () => {
+      cancelled = true
+    }
+  }, [viewer?.item])
 
   useEffect(() => {
     return () => {
@@ -503,7 +530,9 @@ export default function CreativeGallery() {
 
             {viewer.item.type === 'image' && (
               <img
-                src={viewer.item.src}
+                src={loadedImageSrc === viewer.item.src
+                  ? loadedImageSrc
+                  : viewer.item.thumb || viewer.item.src}
                 alt="Creative preview"
                 draggable="false"
                 className="
