@@ -353,15 +353,6 @@ summary:
   // ----------------------------------------------------------------------------
   gallery: [
     {
-      id: 'indraj-menu',
-      label: 'Indraj Menu',
-      brand: 'Indraj Stay · Food & menu creatives',
-      folder: 'indraj-menu',
-      images: 16,
-      files: Array.from({ length: 16 }, (_, index) => `indraj-menu-${String(index + 1).padStart(2, '0')}.jpg`),
-      videos: [],
-    },
-    {
       id: 'meta-ads',
       label: 'Meta Ads',
       brand: 'Campaigns across automotive, hospitality & retail',
@@ -429,6 +420,15 @@ summary:
       brand: 'AutoVeer & more',
       images: 0,
       videos: ['pre-purchase-veera.mp4', 'ai-broadcast.mp4', 'namaste-india-handicraft.mp4', '80s-work-culture.mp4'],
+    },
+    {
+      id: 'indraj-menu',
+      label: 'Indraj Menu',
+      brand: 'Indraj Stay · Food & menu creatives',
+      folder: 'indraj-menu',
+      images: 16,
+      files: Array.from({ length: 16 }, (_, index) => `indraj-menu-${String(index + 1).padStart(2, '0')}.jpg`),
+      videos: [],
     },
   ],
 }
