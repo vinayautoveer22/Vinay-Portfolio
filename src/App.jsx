@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
 import Projects from './components/Projects'
+import CampaignPerformance from './components/CampaignPerformance'
 import FreelanceProjects from './components/FreelanceProjects'
 import CreativeGallery from './components/CreativeGallery'
 import Experience from './components/Experience'
@@ -31,6 +32,7 @@ export default function App() {
           <About />
           <Services />
           <Projects />
+          <CampaignPerformance />
           <FreelanceProjects />
           <CampaignProcess />
           <CreativeGallery />
