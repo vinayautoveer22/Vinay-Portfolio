@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Activity, BarChart3, MousePointerClick, Target } from 'lucide-react'
+import { Activity, BarChart3, ChevronDown, MousePointerClick, Target } from 'lucide-react'
 import SectionHeader from './SectionHeader'
 import { portfolioData } from '../data/portfolioData'
 
@@ -35,8 +35,10 @@ function MetricCard({ label, value, detail, icon: Icon, accent }) {
 export default function CampaignPerformance() {
   const campaigns = portfolioData.campaignSnapshots || []
   const [selectedId, setSelectedId] = useState('nissan-tekton-lead')
+  const [campaignMenuOpen, setCampaignMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const campaignMenuRef = useRef(null)
   const selected = campaigns.find((campaign) => campaign.id === selectedId) || campaigns[0]
   const leadCampaigns = useMemo(
     () => campaigns
@@ -69,6 +71,24 @@ export default function CampaignPerformance() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    if (!campaignMenuOpen) return undefined
+
+    const closeOnOutsideClick = (event) => {
+      if (!campaignMenuRef.current?.contains(event.target)) setCampaignMenuOpen(false)
+    }
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setCampaignMenuOpen(false)
+    }
+
+    document.addEventListener('pointerdown', closeOnOutsideClick)
+    document.addEventListener('keydown', closeOnEscape)
+    return () => {
+      document.removeEventListener('pointerdown', closeOnOutsideClick)
+      document.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [campaignMenuOpen])
+
   if (!campaigns.length || !selected) return null
 
   const otherClicks = Math.max(0, selected.allClicks - selected.linkClicks)
@@ -86,7 +106,7 @@ export default function CampaignPerformance() {
           description="Selected Meta Ads results across automotive, hospitality and hiring campaigns."
         />
 
-        <div className="glass ring-gradient mt-12 overflow-hidden rounded-[30px] p-4 sm:p-6 lg:p-8">
+        <div className="glass ring-gradient mt-12 overflow-visible rounded-[30px] p-4 sm:p-6 lg:p-8">
           <div className="flex flex-col gap-5 border-b border-line pb-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-300/15 bg-cyan-300/10 text-cyan-200">
@@ -97,18 +117,48 @@ export default function CampaignPerformance() {
                 <p className="mt-1 text-xs text-ink-3">{campaigns.length} campaigns Â· account results as reported</p>
               </div>
             </div>
-            <label className="flex flex-col gap-2 sm:min-w-[280px]">
+            <div ref={campaignMenuRef} className="relative z-20 flex flex-col gap-2 sm:min-w-[280px]">
               <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-3">Explore a campaign</span>
-              <select
-                value={selectedId}
-                onChange={(event) => setSelectedId(event.target.value)}
-                className="w-full rounded-xl border border-white/10 bg-[#17191e] px-3.5 py-3 text-sm text-white outline-none transition focus:border-cyan-300/50"
+              <button
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded={campaignMenuOpen}
+                onClick={() => setCampaignMenuOpen((open) => !open)}
+                className="flex w-full items-center justify-between gap-3 rounded-xl border border-white/15 bg-[#202329] px-3.5 py-3 text-left text-sm font-medium text-white outline-none transition hover:border-cyan-300/40 focus:border-cyan-300/60"
               >
-                {campaigns.map((campaign) => (
-                  <option key={campaign.id} value={campaign.id}>{campaign.name}</option>
-                ))}
-              </select>
-            </label>
+                <span className="truncate">{selected.name}</span>
+                <ChevronDown size={16} className={`shrink-0 text-slate-300 transition-transform ${campaignMenuOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {campaignMenuOpen && (
+                <div
+                  role="listbox"
+                  aria-label="Choose a campaign"
+                  className="absolute left-0 right-0 top-full mt-2 max-h-64 overflow-y-auto rounded-xl border border-white/15 bg-[#17191e] p-1.5 shadow-[0_18px_48px_rgba(0,0,0,0.65)] ring-1 ring-black/40"
+                >
+                  {campaigns.map((campaign) => {
+                    const isSelected = campaign.id === selectedId
+                    return (
+                      <button
+                        key={campaign.id}
+                        type="button"
+                        role="option"
+                        aria-selected={isSelected}
+                        onClick={() => {
+                          setSelectedId(campaign.id)
+                          setCampaignMenuOpen(false)
+                        }}
+                        className={`flex w-full items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-left text-xs transition-colors ${isSelected ? 'bg-cyan-400/15 text-cyan-100' : 'text-slate-200 hover:bg-white/10 hover:text-white'}`}
+                      >
+                        <span className="truncate">{campaign.name}</span>
+                        <span className={`shrink-0 text-[10px] ${campaign.status === 'Active' ? 'text-emerald-300' : 'text-slate-400'}`}>
+                          {campaign.status}
+                        </span>
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
+            </div>
           </div>
 
           <div key={selected.id} className="mt-6 fade-up">
@@ -246,3 +296,4 @@ export default function CampaignPerformance() {
     </section>
   )
 }
+
