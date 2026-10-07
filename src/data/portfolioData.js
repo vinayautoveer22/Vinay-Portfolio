@@ -101,6 +101,16 @@ summary:
   // ----------------------------------------------------------------------------
   projects: [
     {
+      id: 'be-baddie',
+      name: 'Be Baddie',
+      category: 'FREELANCE · FASHION CAMPAIGN',
+      description: 'A warm editorial launch visual for Be Baddie’s Midnight Bloom collection, featuring a black floral kurti against a soft beige palette with refined campaign typography.',
+      services: ['Fashion Campaign Creative', 'Social Media Design', 'Product Storytelling'],
+      image: './projects/be-baddie/4.svg',
+      imageFit: 'contain',
+      colorTheme: 'amber',
+    },
+    {
       id: 'autoveer-2-wheeler',
       name: 'AutoVeer 2 Wheeler',
       category: 'AUTOMOTIVE CAMPAIGN',
