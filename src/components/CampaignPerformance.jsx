@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Activity, BarChart3, ChevronDown, MousePointerClick, Target } from 'lucide-react'
+import { Activity, BarChart3, ChevronDown, MoreHorizontal, MousePointerClick, Target } from 'lucide-react'
 import SectionHeader from './SectionHeader'
 import { portfolioData } from '../data/portfolioData'
 
@@ -258,7 +258,7 @@ export default function CampaignPerformance() {
           <details className="group mt-5 rounded-2xl border border-white/[0.08] bg-[#101216]/55">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 text-sm font-semibold text-ink marker:hidden">
               <span>Explore all {campaigns.length} campaign snapshots</span>
-              <span className="text-xs font-medium text-cyan-200 transition-transform group-open:rotate-180">âŒ„</span>
+              <MoreHorizontal size={20} aria-hidden="true" className="shrink-0 text-cyan-200" />
             </summary>
             <div className="max-w-full overflow-x-auto border-t border-line">
               <table className="w-full min-w-[760px] text-left text-xs">
