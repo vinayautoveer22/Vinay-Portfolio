@@ -34,10 +34,10 @@ export default function App() {
           <Projects />
           <CampaignPerformance />
           <FreelanceProjects />
-          <CampaignProcess />
           <CreativeGallery />
           <Experience />
           <Skills />
+          <CampaignProcess />
           <Contact />
         </main>
 
@@ -48,3 +48,4 @@ export default function App() {
       </div>
   )
 }
+
