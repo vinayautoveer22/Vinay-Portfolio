@@ -22,19 +22,37 @@ export default function Navbar() {
   const [active, setActive] = useState('')
   const [scrolled, setScrolled] = useState(false)
 
-  // Track which section is currently in the middle of the viewport
+  // Track the most recently entered section; campaign results belong to Work.
   useEffect(() => {
-    const sections = [...navLinks, { href: '#contact' }]
-      .map((l) => document.querySelector(l.href))
-      .filter(Boolean)
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => entry.isIntersecting && setActive(`#${entry.target.id}`))
-      },
-      { rootMargin: '-45% 0px -50% 0px' }
-    )
-    sections.forEach((s) => observer.observe(s))
-    return () => observer.disconnect()
+    const sections = [
+      { id: 'about', href: '#about' },
+      { id: 'services', href: '#services' },
+      { id: 'projects', href: '#projects' },
+      { id: 'campaign-results', href: '#projects' },
+      { id: 'freelance', href: '#freelance' },
+      { id: 'ai-creative', href: '#ai-creative' },
+      { id: 'experience', href: '#experience' },
+      { id: 'skills', href: '#skills' },
+      { id: 'contact', href: '#contact' },
+    ]
+
+    const updateActiveSection = () => {
+      const activationLine = window.scrollY + Math.min(200, window.innerHeight * 0.28)
+      const currentSection = sections
+        .map((section) => ({ ...section, top: document.getElementById(section.id)?.getBoundingClientRect().top + window.scrollY }))
+        .filter((section) => Number.isFinite(section.top) && section.top <= activationLine)
+        .sort((a, b) => b.top - a.top)[0]
+
+      setActive(currentSection?.href || '')
+    }
+
+    updateActiveSection()
+    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    window.addEventListener('resize', updateActiveSection)
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection)
+      window.removeEventListener('resize', updateActiveSection)
+    }
   }, [])
 
   useEffect(() => {
@@ -156,3 +174,4 @@ export default function Navbar() {
     </header>
   )
 }
+
