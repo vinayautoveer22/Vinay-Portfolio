@@ -101,16 +101,6 @@ summary:
   // ----------------------------------------------------------------------------
   projects: [
     {
-      id: 'be-baddie',
-      name: 'Be Baddie',
-      category: 'FREELANCE · FASHION CAMPAIGN',
-      description: 'A warm editorial launch visual for Be Baddie’s Midnight Bloom collection, featuring a black floral kurti against a soft beige palette with refined campaign typography.',
-      services: ['Fashion Campaign Creative', 'Social Media Design', 'Product Storytelling'],
-      image: './projects/be-baddie/4.svg',
-      imageFit: 'contain',
-      colorTheme: 'amber',
-    },
-    {
       id: 'autoveer-2-wheeler',
       name: 'AutoVeer 2 Wheeler',
       category: 'AUTOMOTIVE CAMPAIGN',
@@ -199,6 +189,23 @@ summary:
       services: ['Social Media', 'Food Content', 'Local Marketing'],
       image: './projects/insta-pages/streetside-instagram.png',
       visualTone: 'amber',
+    },
+  ],
+
+  // ----------------------------------------------------------------------------
+  // Freelance Projects
+  // ----------------------------------------------------------------------------
+  freelanceProjects: [
+    {
+      id: 'be-baddie',
+      name: 'Be Baddie',
+      category: 'FASHION CAMPAIGN',
+      collection: 'Midnight Bloom',
+      description: 'A launch creative for the Midnight Bloom collection, pairing a black floral kurti with a warm beige palette and editorial campaign typography.',
+      services: ['Campaign Creative', 'Social Media Design', 'Fashion'],
+      image: './projects/be-baddie/4.svg',
+      imageFit: 'contain',
+      colorTheme: 'amber',
     },
   ],
 
