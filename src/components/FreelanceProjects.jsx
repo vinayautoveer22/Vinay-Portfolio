@@ -5,9 +5,12 @@ import { portfolioData } from '../data/portfolioData'
 import { useState } from 'react'
 
 function FreelanceProjectCard({ project, index, whatsappUrl }) {
-  const images = project.images || []
+  const variants = project.variants || [{ name: 'Default', swatch: '#242424', images: project.images || [] }]
+  const [activeVariantIndex, setActiveVariantIndex] = useState(0)
   const [activeImage, setActiveImage] = useState(0)
   const [isGalleryOpen, setIsGalleryOpen] = useState(false)
+  const activeVariant = variants[activeVariantIndex]
+  const images = activeVariant?.images || []
   const active = images[activeImage]
 
   return (
@@ -83,9 +86,38 @@ function FreelanceProjectCard({ project, index, whatsappUrl }) {
             <p className="mt-3 text-sm font-medium uppercase tracking-[0.18em] text-amber-300">
               {project.collection}
               <span className="mx-2 text-ink-3">/</span>
-              Black Floral Kurti
+              {activeVariant.name} Floral Kurti
             </p>
           )}
+          <div className="mt-7">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-3">
+              Choose a colour
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {variants.map((variant, variantIndex) => (
+                <button
+                  key={variant.name}
+                  type="button"
+                  onClick={() => {
+                    setActiveVariantIndex(variantIndex)
+                    setActiveImage(0)
+                  }}
+                  aria-pressed={variantIndex === activeVariantIndex}
+                  className={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-medium transition-colors ${
+                    variantIndex === activeVariantIndex
+                      ? 'border-white/35 bg-white/10 text-white'
+                      : 'border-white/10 bg-black/15 text-ink-2 hover:border-white/25 hover:text-white'
+                  }`}
+                >
+                  <span
+                    className="h-3 w-3 rounded-full border border-black/20 shadow-sm"
+                    style={{ backgroundColor: variant.swatch }}
+                  />
+                  {variant.name}
+                </button>
+              ))}
+            </div>
+          </div>
           <p className="mt-6 max-w-xl text-base leading-7 text-ink-2">
             {project.description}
           </p>
@@ -109,7 +141,7 @@ function FreelanceProjectCard({ project, index, whatsappUrl }) {
               <ArrowUpRight size={16} />
             </a>
             <p className="mt-5 text-xs font-medium uppercase tracking-[0.16em] text-ink-3">
-              {images.length} campaign visuals
+              {images.length} visuals <span className="mx-1">Â·</span> {variants.length} colour options
             </p>
           </div>
         </div>
