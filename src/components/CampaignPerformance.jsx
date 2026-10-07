@@ -10,6 +10,13 @@ const moneyFormat = new Intl.NumberFormat('en-IN', {
   maximumFractionDigits: 2,
 })
 
+function costContext(campaign) {
+  if (campaign.objective === 'Reach') return 'Per 1,000 people reached'
+  if (campaign.objective === 'Messaging') return 'Per conversation started'
+  if (campaign.objective === 'Calls') return 'Per call placed'
+  return 'Per lead'
+}
+
 function MetricCard({ label, value, detail, icon: Icon, accent }) {
   return (
     <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4 sm:p-5">
@@ -115,7 +122,7 @@ export default function CampaignPerformance() {
               <MetricCard label={selected.resultType} value={numberFormat.format(selected.results)} detail="Reported results" icon={Target} accent="bg-brand-400/10 text-brand-300" />
               <MetricCard label="Reach" value={numberFormat.format(selected.reach)} detail={`Frequency ${selected.frequency.toFixed(2)}`} icon={Activity} accent="bg-cyan-400/10 text-cyan-200" />
               <MetricCard label="Impressions" value={numberFormat.format(selected.impressions)} detail={`${numberFormat.format(selected.linkClicks)} link clicks`} icon={BarChart3} accent="bg-violet-400/10 text-violet-200" />
-              <MetricCard label="Cost per result" value={moneyFormat.format(selected.costPerResult)} detail={selected.objective} icon={MousePointerClick} accent="bg-amber-400/10 text-amber-200" />
+              <MetricCard label="Cost per result" value={moneyFormat.format(selected.costPerResult)} detail={costContext(selected)} icon={MousePointerClick} accent="bg-amber-400/10 text-amber-200" />
             </div>
           </div>
 
