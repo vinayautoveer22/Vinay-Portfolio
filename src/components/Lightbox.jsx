@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 /**
  * Full-screen glass viewer for images and videos.
- * Arrow buttons, keyboard (← → Esc) and touch swipe move through `items`.
+ * Arrow buttons, keyboard (â† â†’ Esc) and touch swipe move through `items`.
  */
 export default function Lightbox({ items, index, label, onIndex, onClose }) {
   const touchX = useRef(null)
@@ -46,7 +46,7 @@ export default function Lightbox({ items, index, label, onIndex, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-[80] flex flex-col bg-[#eef2f9]/85 backdrop-blur-2xl fade-in"
+      className="fixed inset-0 z-[80] flex flex-col bg-[#08090b]/45 text-white backdrop-blur-md fade-in"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -55,13 +55,13 @@ export default function Lightbox({ items, index, label, onIndex, onClose }) {
       {/* Top bar */}
       <div className="flex items-center justify-between gap-4 px-4 sm:px-8 pt-4 sm:pt-6" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-3">
-          <span className="chip chip-brand">{label}</span>
-          <span className="text-sm font-semibold text-ink tabular-nums">
+          <span className="chip !border-white/20 !bg-black/55 !text-white backdrop-blur-lg">{label}</span>
+          <span className="text-sm font-semibold text-white tabular-nums drop-shadow-md">
             {String(index + 1).padStart(2, '0')}
-            <span className="text-ink-3"> / {String(total).padStart(2, '0')}</span>
+            <span className="text-white/65"> / {String(total).padStart(2, '0')}</span>
           </span>
         </div>
-        <button type="button" onClick={onClose} className="arrow-btn" aria-label="Close viewer">
+        <button type="button" onClick={onClose} className="arrow-btn !border-white/20 !bg-black/45 !text-white hover:!bg-black/70" aria-label="Close viewer">
           <X size={20} />
         </button>
       </div>
@@ -103,7 +103,7 @@ export default function Lightbox({ items, index, label, onIndex, onClose }) {
                 e.stopPropagation()
                 go(-1)
               }}
-              className="arrow-btn absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14"
+              className="arrow-btn absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 !border-white/20 !bg-black/45 !text-white hover:!bg-black/70"
               aria-label="Previous"
             >
               <ChevronLeft size={24} />
@@ -114,7 +114,7 @@ export default function Lightbox({ items, index, label, onIndex, onClose }) {
                 e.stopPropagation()
                 go(1)
               }}
-              className="arrow-btn absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14"
+              className="arrow-btn absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 !border-white/20 !bg-black/45 !text-white hover:!bg-black/70"
               aria-label="Next"
             >
               <ChevronRight size={24} />
