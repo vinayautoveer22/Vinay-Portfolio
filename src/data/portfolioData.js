@@ -1,6 +1,6 @@
 /**
  * ==============================================================================
- * VINAY KUMAR - PORTFOLIO DATA STORE
+ * AKSHAY KUMAR - PORTFOLIO DATA STORE
  * ==============================================================================
  * This file contains all the data used across the portfolio website.
  * Any beginner can easily edit texts, add projects, or update skills here.
@@ -10,7 +10,7 @@ export const portfolioData = {
   // ----------------------------------------------------------------------------
   // Personal & Hero Info
   // ----------------------------------------------------------------------------
-  name: 'Vinay Kumar',
+  name: 'Akshay Kumar',
 
 title: 'Digital Marketer / Performance Marketing Specialist',
 
@@ -29,7 +29,7 @@ summary:
     displayPhone: '+91 99012 76130',
     email: 'vinaykumar39566@gmail.com',
     location: 'Delhi, India',
-    whatsappMessage: 'Hi Vinay, I saw your portfolio and would like to discuss a project!',
+    whatsappMessage: 'Hi Akshay, I saw your portfolio and would like to discuss a project!',
   },
 
   // ----------------------------------------------------------------------------

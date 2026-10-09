@@ -20,7 +20,7 @@ export default function Contact() {
 
   const whatsappDirect = `https://wa.me/${portfolioData.contact.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
     formData.name
-      ? `Hi Vinay, my name is ${formData.name}. I am interested in ${formData.service}. Message: ${formData.message}`
+      ? `Hi Akshay, my name is ${formData.name}. I am interested in ${formData.service}. Message: ${formData.message}`
       : portfolioData.contact.whatsappMessage
   )}`
 

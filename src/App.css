@@ -2,7 +2,7 @@
 
  * ==============================================================================
 
- * VINAY KUMAR - PORTFOLIO COMPONENT STYLES
+ * AKSHAY KUMAR - PORTFOLIO COMPONENT STYLES
 
  * ==============================================================================
 
@@ -2442,11 +2442,11 @@
 }
 
 /* ==============================================================================
-   PREMIUM PORTFOLIO INTRO — VINAY SLIDE UP
+   PREMIUM PORTFOLIO INTRO — AKSHAY SLIDE UP
    Keeps the existing particles, floating icons and ambient background.
    Flow:
-   1) VINAY reveals softly in the centre.
-   2) VINAY slides upward smoothly.
+   1) AKSHAY reveals softly in the centre.
+   2) AKSHAY slides upward smoothly.
    3) PORTFOLIO fades in from blur underneath.
    4) The intro dissolves into the website after about 4 seconds.
 ============================================================================== */
@@ -2774,7 +2774,7 @@
 
 
 /* ------------------------------------------------------------------------------
-   VINAY name stage
+   AKSHAY name stage
 ------------------------------------------------------------------------------ */
 
 .intro-name-stage {
@@ -2827,9 +2827,9 @@
 
 
 /* ------------------------------------------------------------------------------
-   VINAY
+   AKSHAY
    Compatible with both:
-   <span className="intro-name">VINAY</span>
+   <span className="intro-name">AKSHAY</span>
    and the earlier left/right split JSX.
 ------------------------------------------------------------------------------ */
 

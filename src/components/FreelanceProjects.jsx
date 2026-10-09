@@ -168,7 +168,7 @@ export default function FreelanceProjects() {
   const whatsappUrl = `https://wa.me/${portfolioData.contact.phone.replace(
     /[^0-9]/g,
     ''
-  )}?text=${encodeURIComponent('Hi Vinay, I would like to discuss a freelance project.')}`
+  )}?text=${encodeURIComponent('Hi Akshay, I would like to discuss a freelance project.')}`
 
   return (
     <section id="freelance" className="relative py-24 lg:py-32">
