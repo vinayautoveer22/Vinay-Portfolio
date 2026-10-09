@@ -9,7 +9,7 @@ export default defineConfig({
   base: './',
   plugins: [react(), tailwindcss(), viteSingleFile()],
   build: {
-    minify: 'esbuild',
+    minify: 'oxc',
     sourcemap: false,
   },
 })
