@@ -68,7 +68,7 @@ export default function Hero() {
               <div className="absolute inset-16 rounded-full bg-gradient-to-br from-brand-400/35 via-violet-400/30 to-sky-300/30 blur-3xl" />
               <img
                 src="./character.webp"
-                alt="Akshay Kumar"
+                alt="Vinay Kumar"
                 width="880"
                 height="880"
                 fetchPriority="high"
