@@ -1,0 +1,224 @@
+/* Neumorphism preview theme: a soft mineral canvas with raised and inset surfaces. */
+:root {
+  color-scheme: light;
+  --neo-canvas: #e8ebf0;
+  --neo-surface: #e8ebf0;
+  --neo-text: #273248;
+  --neo-muted: #657087;
+  --neo-shadow-dark: #c5c9d0;
+  --neo-shadow-light: #ffffff;
+  --neo-blue: #4169d8;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background: var(--neo-canvas) !important;
+  color: var(--neo-text) !important;
+}
+
+body {
+  background-image: none !important;
+}
+
+body::before {
+  background:
+    radial-gradient(ellipse at 14% 8%, rgb(255 255 255 / 0.76), transparent 36%),
+    radial-gradient(ellipse at 90% 34%, rgb(201 215 245 / 0.34), transparent 34%) !important;
+  opacity: 0.72 !important;
+}
+
+.ambient,
+.ambient-grid,
+.ambient-particles,
+.blob,
+.ambient-particle {
+  display: none !important;
+}
+
+/* Raised panels retain their existing geometry and spacing. */
+.glass,
+.glass-strong,
+.card,
+.cta-panel,
+#experience [role='tabpanel'],
+#experience .experience-tab,
+header > div,
+nav[aria-label],
+footer .glass {
+  color: var(--neo-text) !important;
+  background: var(--neo-surface) !important;
+  border: 1px solid rgb(255 255 255 / 0.76) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow:
+    9px 9px 22px var(--neo-shadow-dark),
+    -9px -9px 22px var(--neo-shadow-light),
+    inset 1px 1px 0 rgb(255 255 255 / 0.55) !important;
+}
+
+.card,
+.glass,
+.glass-strong {
+  border-radius: 1.35rem;
+}
+
+.card::before,
+.card::after,
+.glass::before,
+.glass::after {
+  opacity: 0 !important;
+}
+
+.card:hover,
+.glass:hover {
+  transform: translateY(-2px) !important;
+  box-shadow:
+    12px 12px 26px var(--neo-shadow-dark),
+    -10px -10px 26px var(--neo-shadow-light) !important;
+}
+
+.card:active,
+.btn:active,
+.arrow-btn:active,
+.icon-tile:active {
+  box-shadow:
+    inset 5px 5px 10px var(--neo-shadow-dark),
+    inset -5px -5px 10px var(--neo-shadow-light) !important;
+  transform: translateY(1px);
+}
+
+.text-ink,
+.text-white,
+.text-slate-100,
+.text-slate-200,
+.text-slate-300 {
+  color: var(--neo-text) !important;
+}
+
+.text-ink-2,
+.text-ink-3,
+.text-white\/80,
+.text-white\/70,
+.text-white\/60 {
+  color: var(--neo-muted) !important;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #202b40;
+}
+
+.chip,
+.status-pill,
+.experience-date,
+.experience-role {
+  color: var(--neo-blue) !important;
+  background: var(--neo-surface) !important;
+  border-color: rgb(65 105 216 / 0.24) !important;
+  box-shadow:
+    4px 4px 9px var(--neo-shadow-dark),
+    -4px -4px 9px var(--neo-shadow-light) !important;
+}
+
+.btn-glass,
+.btn-secondary,
+.arrow-btn,
+.icon-tile,
+.brand-mark,
+.experience-initials {
+  color: var(--neo-blue) !important;
+  background: var(--neo-surface) !important;
+  border: 1px solid rgb(255 255 255 / 0.78) !important;
+  box-shadow:
+    5px 5px 11px var(--neo-shadow-dark),
+    -5px -5px 11px var(--neo-shadow-light) !important;
+}
+
+.btn-primary {
+  color: #fff !important;
+  background: linear-gradient(135deg, #5278e7, #355ac4) !important;
+  border: 1px solid rgb(255 255 255 / 0.55) !important;
+  box-shadow:
+    5px 5px 12px #bdc3d0,
+    -4px -4px 10px #fff,
+    inset 1px 1px 0 rgb(255 255 255 / 0.28) !important;
+}
+
+.btn-primary:hover {
+  color: #fff !important;
+  filter: brightness(1.06);
+  box-shadow:
+    7px 7px 15px #bdc3d0,
+    -5px -5px 12px #fff !important;
+}
+
+input,
+textarea,
+select,
+[role='combobox'] {
+  color: var(--neo-text) !important;
+  background: var(--neo-surface) !important;
+  border: 1px solid rgb(197 201 208 / 0.65) !important;
+  box-shadow:
+    inset 4px 4px 8px var(--neo-shadow-dark),
+    inset -4px -4px 8px var(--neo-shadow-light) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8490a3 !important;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgb(65 105 216 / 0.55) !important;
+  outline-offset: 3px;
+}
+
+::selection {
+  color: #20335d;
+  background: #c6d5ff;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neo-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5c9d0;
+  border-color: var(--neo-canvas);
+}
+
+@media (max-width: 768px) {
+  .card,
+  .glass,
+  .glass-strong,
+  #experience .experience-tab {
+    box-shadow:
+      6px 6px 14px var(--neo-shadow-dark),
+      -6px -6px 14px var(--neo-shadow-light) !important;
+  }
+
+  .card:hover,
+  .glass:hover {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
