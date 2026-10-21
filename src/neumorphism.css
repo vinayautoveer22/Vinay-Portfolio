@@ -1,13 +1,15 @@
-/* Neumorphism preview theme: a soft mineral canvas with raised and inset surfaces. */
+/* Neumorphism preview inspired by luminous, translucent dark glass surfaces. */
 :root {
-  color-scheme: light;
-  --neo-canvas: #e8ebf0;
-  --neo-surface: #e8ebf0;
-  --neo-text: #273248;
-  --neo-muted: #657087;
-  --neo-shadow-dark: #c5c9d0;
-  --neo-shadow-light: #ffffff;
-  --neo-blue: #4169d8;
+  color-scheme: dark;
+  --neo-canvas: #100a35;
+  --neo-surface: rgb(48 39 91 / 0.66);
+  --neo-text: #f7f3ff;
+  --neo-muted: #c4bddb;
+  --neo-shadow-dark: rgb(5 3 28 / 0.56);
+  --neo-shadow-light: rgb(255 255 255 / 0.19);
+  --neo-blue: #75e4ff;
+  --neo-pink: #ff398e;
+  --neo-orange: #ffad31;
 }
 
 html,
@@ -19,25 +21,47 @@ body,
 }
 
 body {
-  background-image: none !important;
+  background-image:
+    radial-gradient(ellipse at 4% 36%, rgb(53 28 119 / 0.84), transparent 42%),
+    radial-gradient(ellipse at 94% 27%, rgb(11 44 133 / 0.7), transparent 39%),
+    linear-gradient(135deg, #100a35 0%, #21114a 48%, #080e35 100%) !important;
+  background-attachment: fixed !important;
 }
 
 body::before {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
   background:
-    radial-gradient(ellipse at 14% 8%, rgb(255 255 255 / 0.76), transparent 36%),
-    radial-gradient(ellipse at 90% 34%, rgb(201 215 245 / 0.34), transparent 34%) !important;
-  opacity: 0.72 !important;
+    radial-gradient(circle at 8% 8%, rgb(255 165 38 / 0.92) 0 25px, rgb(255 55 133 / 0.8) 27px 72px, transparent 74px),
+    radial-gradient(circle at 97% 12%, rgb(255 50 132 / 0.86) 0 28px, rgb(255 155 35 / 0.78) 30px 80px, transparent 82px),
+    radial-gradient(ellipse at 4% 88%, rgb(252 55 145 / 0.55), transparent 23%),
+    radial-gradient(ellipse at 91% 94%, rgb(255 169 38 / 0.62), transparent 20%),
+    radial-gradient(ellipse at 52% 52%, rgb(95 65 166 / 0.28), transparent 52%) !important;
+  opacity: 0.75 !important;
 }
 
-.ambient,
+/* Keep the decorative treatment lightweight and preserve the existing page layout. */
 .ambient-grid,
 .ambient-particles,
-.blob,
-.ambient-particle {
+.ambient-particle,
+.blob {
   display: none !important;
 }
 
-/* Raised panels retain their existing geometry and spacing. */
+.ambient {
+  opacity: 0.35 !important;
+}
+
+main,
+header,
+footer,
+#root > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Frosted surfaces with soft raised edges and deep ambient shadow. */
 .glass,
 .glass-strong,
 .card,
@@ -48,35 +72,40 @@ header > div,
 nav[aria-label],
 footer .glass {
   color: var(--neo-text) !important;
-  background: var(--neo-surface) !important;
-  border: 1px solid rgb(255 255 255 / 0.76) !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
+  background:
+    linear-gradient(138deg, rgb(255 255 255 / 0.17), rgb(255 255 255 / 0.045) 48%, rgb(7 7 35 / 0.26)),
+    var(--neo-surface) !important;
+  border: 1px solid rgb(255 255 255 / 0.36) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(145%) !important;
+  backdrop-filter: blur(20px) saturate(145%) !important;
   box-shadow:
-    9px 9px 22px var(--neo-shadow-dark),
-    -9px -9px 22px var(--neo-shadow-light),
-    inset 1px 1px 0 rgb(255 255 255 / 0.55) !important;
+    inset 1px 1px 0 rgb(255 255 255 / 0.34),
+    inset -1px -1px 0 rgb(8 5 37 / 0.22),
+    12px 16px 34px var(--neo-shadow-dark),
+    -5px -5px 22px rgb(255 255 255 / 0.075) !important;
 }
 
 .card,
 .glass,
 .glass-strong {
-  border-radius: 1.35rem;
+  border-radius: 1.4rem;
 }
 
 .card::before,
 .card::after,
 .glass::before,
 .glass::after {
-  opacity: 0 !important;
+  opacity: 0.35 !important;
 }
 
 .card:hover,
 .glass:hover {
-  transform: translateY(-2px) !important;
+  transform: translateY(-3px) !important;
+  border-color: rgb(255 255 255 / 0.52) !important;
   box-shadow:
-    12px 12px 26px var(--neo-shadow-dark),
-    -10px -10px 26px var(--neo-shadow-light) !important;
+    inset 1px 1px 0 rgb(255 255 255 / 0.42),
+    15px 20px 38px rgb(5 3 28 / 0.64),
+    0 0 28px rgb(93 100 255 / 0.16) !important;
 }
 
 .card:active,
@@ -84,8 +113,8 @@ footer .glass {
 .arrow-btn:active,
 .icon-tile:active {
   box-shadow:
-    inset 5px 5px 10px var(--neo-shadow-dark),
-    inset -5px -5px 10px var(--neo-shadow-light) !important;
+    inset 5px 5px 12px rgb(5 3 28 / 0.52),
+    inset -4px -4px 10px rgb(255 255 255 / 0.16) !important;
   transform: translateY(1px);
 }
 
@@ -109,19 +138,19 @@ h1,
 h2,
 h3,
 h4 {
-  color: #202b40;
+  color: #fffaff;
 }
 
 .chip,
 .status-pill,
 .experience-date,
 .experience-role {
-  color: var(--neo-blue) !important;
-  background: var(--neo-surface) !important;
-  border-color: rgb(65 105 216 / 0.24) !important;
+  color: #ffd5eb !important;
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.17), rgb(255 255 255 / 0.055)) !important;
+  border-color: rgb(255 255 255 / 0.34) !important;
   box-shadow:
-    4px 4px 9px var(--neo-shadow-dark),
-    -4px -4px 9px var(--neo-shadow-light) !important;
+    inset 1px 1px 0 rgb(255 255 255 / 0.3),
+    4px 5px 12px rgb(5 3 28 / 0.36) !important;
 }
 
 .btn-glass,
@@ -130,30 +159,32 @@ h4 {
 .icon-tile,
 .brand-mark,
 .experience-initials {
-  color: var(--neo-blue) !important;
-  background: var(--neo-surface) !important;
-  border: 1px solid rgb(255 255 255 / 0.78) !important;
+  color: #d8ceff !important;
+  background: linear-gradient(145deg, rgb(255 255 255 / 0.2), rgb(255 255 255 / 0.055)) !important;
+  border: 1px solid rgb(255 255 255 / 0.38) !important;
   box-shadow:
-    5px 5px 11px var(--neo-shadow-dark),
-    -5px -5px 11px var(--neo-shadow-light) !important;
+    inset 1px 1px 0 rgb(255 255 255 / 0.34),
+    6px 7px 15px rgb(5 3 28 / 0.4),
+    -3px -3px 10px rgb(255 255 255 / 0.08) !important;
 }
 
 .btn-primary {
   color: #fff !important;
-  background: linear-gradient(135deg, #5278e7, #355ac4) !important;
-  border: 1px solid rgb(255 255 255 / 0.55) !important;
+  background: linear-gradient(108deg, #ffb12f, #ff5b69 52%, #ed288c) !important;
+  border: 1px solid rgb(255 255 255 / 0.42) !important;
   box-shadow:
-    5px 5px 12px #bdc3d0,
-    -4px -4px 10px #fff,
-    inset 1px 1px 0 rgb(255 255 255 / 0.28) !important;
+    inset 1px 1px 0 rgb(255 255 255 / 0.4),
+    8px 10px 22px rgb(5 3 28 / 0.44),
+    0 0 24px rgb(255 67 139 / 0.26) !important;
 }
 
 .btn-primary:hover {
   color: #fff !important;
-  filter: brightness(1.06);
+  filter: brightness(1.1) saturate(1.08);
   box-shadow:
-    7px 7px 15px #bdc3d0,
-    -5px -5px 12px #fff !important;
+    inset 1px 1px 0 rgb(255 255 255 / 0.48),
+    10px 12px 25px rgb(5 3 28 / 0.5),
+    0 0 32px rgb(255 67 139 / 0.4) !important;
 }
 
 input,
@@ -161,16 +192,16 @@ textarea,
 select,
 [role='combobox'] {
   color: var(--neo-text) !important;
-  background: var(--neo-surface) !important;
-  border: 1px solid rgb(197 201 208 / 0.65) !important;
+  background: linear-gradient(150deg, rgb(17 12 55 / 0.55), rgb(77 63 122 / 0.3)) !important;
+  border: 1px solid rgb(255 255 255 / 0.28) !important;
   box-shadow:
-    inset 4px 4px 8px var(--neo-shadow-dark),
-    inset -4px -4px 8px var(--neo-shadow-light) !important;
+    inset 5px 5px 12px rgb(6 4 31 / 0.43),
+    inset -3px -3px 9px rgb(255 255 255 / 0.095) !important;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #8490a3 !important;
+  color: #c0b6d7 !important;
 }
 
 button:focus-visible,
@@ -178,32 +209,34 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 3px solid rgb(65 105 216 / 0.55) !important;
+  outline: 3px solid rgb(117 228 255 / 0.78) !important;
   outline-offset: 3px;
 }
 
 ::selection {
-  color: #20335d;
-  background: #c6d5ff;
+  color: #fff;
+  background: #d82f91;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--neo-canvas);
+  background: #17103f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c5c9d0;
-  border-color: var(--neo-canvas);
+  background: linear-gradient(#f04d9c, #7164dd);
+  border-color: #17103f;
 }
 
 @media (max-width: 768px) {
-  .card,
   .glass,
   .glass-strong,
+  .card,
   #experience .experience-tab {
+    -webkit-backdrop-filter: blur(12px) saturate(125%) !important;
+    backdrop-filter: blur(12px) saturate(125%) !important;
     box-shadow:
-      6px 6px 14px var(--neo-shadow-dark),
-      -6px -6px 14px var(--neo-shadow-light) !important;
+      inset 1px 1px 0 rgb(255 255 255 / 0.28),
+      7px 10px 22px rgb(5 3 28 / 0.48) !important;
   }
 
   .card:hover,
