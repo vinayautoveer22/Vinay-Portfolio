@@ -278,7 +278,7 @@ summary:
     {
       company: 'Autoveer',
       logo: './company-logos/autoveer.jpg',
-      role: 'Digital Marketing Executive',
+      role: 'Performance Marketer',
       period: 'Previous',
       colorTheme: 'ice-blue',
       responsibilities: [
@@ -293,7 +293,7 @@ summary:
     {
       company: 'Bike Blazer',
       logo: './company-logos/cyton-mv.jpg',
-      role: 'Digital Marketing Executive',
+      role: 'Digital Marketing Head',
       period: 'Previous',
       colorTheme: 'mint',
       responsibilities: [
@@ -307,7 +307,7 @@ summary:
     {
       company: 'LF Fashion Studio',
       logo: './company-logos/lf-fashion-studio.jpg',
-      role: 'Social Media Executive',
+      role: 'Social Media Manager',
       period: 'Previous',
       colorTheme: 'lavender',
       responsibilities: [
@@ -320,6 +320,7 @@ summary:
     },
     {
       company: 'Freelance Marketing',
+      logo: './company-logos/company-logos.jpeg',
       role: 'Digital Marketing Freelancer',
       period: 'Ongoing',
       colorTheme: 'amber',
