@@ -35,7 +35,11 @@ export default function Experience() {
                   onClick={() => setActiveIdx(index)}
                   className={`card experience-tab card-interactive text-left p-4 flex items-center gap-4 ${isActive ? 'card-active' : ''}`}
                 >
-                  <span className={`${exp.logo ? 'w-11 h-11' : `experience-initials w-11 h-11 rounded-xl flex items-center justify-center shrink-0 text-sm font-bold font-display ${isActive ? 'brand-mark' : 'bg-white/70 text-ink-2 border border-line'}`}`}>
+                  <span
+                    className={exp.logo
+                      ? `experience-initials ${exp.company === 'Bike Blazer' ? 'w-16' : 'w-11'} h-11 rounded-xl flex items-center justify-center shrink-0 overflow-hidden border border-line p-1.5 ${exp.company === 'Smart Solution Euler' ? 'bg-slate-950' : 'bg-white'}`
+                      : `experience-initials w-11 h-11 rounded-xl flex items-center justify-center shrink-0 text-sm font-bold font-display ${isActive ? 'brand-mark' : 'bg-white/70 text-ink-2 border border-line'}`}
+                  >
                     {exp.logo ? (
                       <img
                         src={exp.logo}
