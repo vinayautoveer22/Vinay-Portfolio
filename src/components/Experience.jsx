@@ -36,11 +36,27 @@ export default function Experience() {
                   className={`card experience-tab card-interactive text-left p-4 flex items-center gap-4 ${isActive ? 'card-active' : ''}`}
                 >
                   <span
-                    className={`experience-initials w-11 h-11 rounded-xl flex items-center justify-center shrink-0 text-sm font-bold font-display ${
-                      isActive ? 'brand-mark' : 'bg-white/70 text-ink-2 border border-line'
+                    className={`experience-initials w-11 h-11 rounded-xl flex items-center justify-center shrink-0 text-sm font-bold font-display overflow-hidden ${
+                      exp.logo
+                        ? 'bg-white border border-line p-1.5'
+                        : isActive
+                          ? 'brand-mark'
+                          : 'bg-white/70 text-ink-2 border border-line'
                     }`}
                   >
-                    {exp.company.slice(0, 2).toUpperCase()}
+                    {exp.logo ? (
+                      <img
+                        src={exp.logo}
+                        alt={`${exp.company} logo`}
+                        width="36"
+                        height="36"
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-contain"
+                      />
+                    ) : (
+                      exp.company.slice(0, 2).toUpperCase()
+                    )}
                   </span>
                   <span className="flex-1 min-w-0">
                     <span className="block font-semibold text-ink truncate">{exp.company}</span>
