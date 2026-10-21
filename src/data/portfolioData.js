@@ -12,14 +12,14 @@ export const portfolioData = {
   // ----------------------------------------------------------------------------
   name: 'Vinay Kumar',
 
-title: 'Digital Marketer / Performance Marketing Specialist',
+title: 'Digital Marketing Specialist',
 
-heroTitle: 'I Turn Digital Marketing Into Real Results',
+heroTitle: 'Digital Marketing Specialist',
 
-tagline: 'Performance Marketing • Lead Generation • Creative Strategy',
+tagline: 'Performance Marketing · Meta Ads · Lead Generation · Social Media & AI-Powered Creatives',
 
 summary:
-  'I help brands grow through performance-focused digital marketing — from Meta Ads and Google Ads to lead generation, social media, websites, and AI-powered creative content. With 2+ years of hands-on experience, I focus on building campaigns, testing creative ideas, managing multiple brands, and continuously improving performance to generate better reach, engagement, and quality leads.',
+  'Digital marketing professional focused on paid advertising, lead generation, social media execution, campaign monitoring, and creative content production. I also work across Google Ads, websites, and AI-assisted creative workflows, drawing on 2+ years of hands-on experience.',
   
   // ----------------------------------------------------------------------------
   // Contact Details
@@ -260,9 +260,37 @@ summary:
   // ----------------------------------------------------------------------------
   experience: [
     {
+      company: 'Smart Solution Euler',
+      companyWebsiteUrl: 'https://www.eulermotors.com/en/',
+      role: 'Digital Marketing Specialist',
+      period: 'October 2026 – Present',
+      summary: 'Recently joined and currently supporting social media execution, Meta Ads lead generation, daily reporting, and coordination with the calling team.',
+      colorTheme: 'ice-blue',
+      responsibilities: [
+        'Manage social media platforms and publish daily posts and marketing creatives.',
+        'Work on Reels and customer testimonial content.',
+        'Support Meta Ads campaigns focused on generating leads for the calling team.',
+        'Collect daily campaign reports and monitor lead delivery and campaign activity.',
+        'Coordinate with the calling team on lead follow-ups.',
+      ],
+    },
+    {
+      company: 'Freelance Marketing',
+      role: 'Digital Marketing Freelancer',
+      period: 'Ongoing',
+      colorTheme: 'amber',
+      responsibilities: [
+        'Built modern WordPress websites, custom blogs, and high-conversion landing pages.',
+        'Managed Google Ads (Search/Display) and Meta Ads campaigns for diverse clients.',
+        'Handled end-to-end social media management and brand voice development.',
+        'Created, edited, and published creative Reels and promotional assets.',
+        'Designed digital marketing banners, carousels, and promotional graphics.',
+      ],
+    },
+    {
       company: 'Autoveer',
       role: 'Digital Marketing Executive',
-      period: 'Recent',
+      period: 'Previous',
       colorTheme: 'ice-blue',
       responsibilities: [
         'Managed Meta Ads campaigns for lead generation and brand awareness.',
@@ -299,19 +327,6 @@ summary:
         'Monitored campaign performance, audience demographics, and engagement rates.',
       ],
     },
-    {
-      company: 'Freelance Marketing',
-      role: 'Digital Marketing Freelancer',
-      period: 'Ongoing',
-      colorTheme: 'amber',
-      responsibilities: [
-        'Built modern WordPress websites, custom blogs, and high-conversion landing pages.',
-        'Managed Google Ads (Search/Display) and Meta Ads campaigns for diverse clients.',
-        'Handled end-to-end social media management and brand voice development.',
-        'Created, edited, and published creative Reels and promotional assets.',
-        'Designed digital marketing banners, carousels, and promotional graphics.',
-      ],
-    },
   ],
 
   // ----------------------------------------------------------------------------
@@ -329,6 +344,10 @@ summary:
         'PPC Campaign Management',
         'Conversion Tracking',
         'Lead Generation',
+        'Campaign Monitoring',
+        'Daily Campaign Reporting',
+        'Reach and Engagement Monitoring',
+        'Lead Follow-up Coordination',
       ],
     },
     {
@@ -341,6 +360,7 @@ summary:
         'Video Editing (CapCut)',
         'Short-form Reels',
         'Viral Hooks Research',
+        'Creative Content Publishing',
       ],
     },
     {
@@ -363,6 +383,8 @@ summary:
         'ChatGPT & Prompt Engineering',
         'AI Video Generation',
         'Gemini & Claude Workflow',
+        'AI-assisted Video Creation (Google Flow)',
+        'Voice-over Generation (ElevenLabs)',
       ],
     },
   ],
@@ -383,6 +405,10 @@ summary:
     { name: 'Kapwing', icon: './icons/kapwing.webp', category: 'Video Production' },
     { name: 'Meta Business Suite', icon: './icons/metabusinesssuite.webp', category: 'Page Manager' },
     { name: 'SMM Panel One', icon: './icons/smmpanelone.webp', category: 'Social Tools' },
+    { name: 'Google Flow', icon: './icons/googleflow.webp', category: 'AI Video' },
+    { name: 'Interakt', icon: './icons/Interakt.png', category: 'Messaging (Learning)' },
+    { name: 'Meta Reach', icon: './icons/metareach.jpg', category: 'Meta Tool' },
+    { name: 'ElevenLabs', icon: null, category: 'Voice-over' },
   ],
 
   // ----------------------------------------------------------------------------

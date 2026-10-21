@@ -18,7 +18,7 @@ export default function Experience() {
           eyebrow="Experience"
           title="Work experience &"
           highlight="proven execution."
-          description="2+ years delivering results across performance marketing, content, and paid media."
+          description="Experience across performance marketing, content, and paid media, including my current Digital Marketing Specialist role."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start mt-16">
@@ -65,7 +65,11 @@ export default function Experience() {
               <span className="chip chip-brand self-start text-xs px-3 py-1.5">{currentExp.period}</span>
             </div>
 
-            <ul className="mt-7 space-y-4">
+            {currentExp.summary && (
+              <p className="mt-7 text-ink-2 text-sm sm:text-base leading-relaxed">{currentExp.summary}</p>
+            )}
+
+            <ul className={`${currentExp.summary ? 'mt-5' : 'mt-7'} space-y-4`}>
               {currentExp.responsibilities.map((resp) => (
                 <li key={resp} className="flex items-start gap-3.5">
                   <span className="mt-0.5 w-5 h-5 rounded-full bg-brand-50 border border-brand-200 text-brand-600 flex items-center justify-center shrink-0">

@@ -20,7 +20,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 items-center">
           {/* Left column */}
           <div className="lg:col-span-7 fade-up">
-            <span className="status-pill">Available for new client campaigns</span>
+            <span className="status-pill">Available for selected freelance projects</span>
 
             <h1 className="mt-7 text-[2.6rem] sm:text-6xl lg:text-[4.4rem] font-extrabold text-ink leading-[1.02]">
               Hi, I'm <span className="text-gradient">{portfolioData.name}</span>
@@ -28,6 +28,10 @@ export default function Hero() {
 
             <p className="mt-6 text-xl sm:text-2xl font-semibold text-ink font-display leading-snug">
               {portfolioData.heroTitle}
+            </p>
+
+            <p className="mt-3 text-sm sm:text-base font-medium text-brand-700 leading-relaxed">
+              {portfolioData.tagline}
             </p>
 
             <p className="mt-5 text-base sm:text-lg text-ink-2 leading-relaxed max-w-2xl">

@@ -1,4 +1,4 @@
-import { GraduationCap, Check } from 'lucide-react'
+import { AudioLines, GraduationCap, Check } from 'lucide-react'
 import SectionHeader from './SectionHeader'
 import { portfolioData } from '../data/portfolioData'
 
@@ -39,14 +39,18 @@ export default function Skills() {
 
         {/* Tools */}
         <div className="mt-20">
-          <h3 className="text-xl sm:text-2xl font-bold text-ink">Tools I use every day</h3>
-          <p className="mt-1.5 text-sm text-ink-3">{portfolioData.tools.length} platforms across ads, analytics, AI, and content.</p>
+          <h3 className="text-xl sm:text-2xl font-bold text-ink">Tools & platforms</h3>
+          <p className="mt-1.5 text-sm text-ink-3">{portfolioData.tools.length} platforms across advertising, social media, AI, and content.</p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-7">
             {portfolioData.tools.map((tool) => (
               <div key={tool.name} className="card group h-full p-5 flex flex-col items-center text-center">
                 <div className="w-14 h-14 rounded-2xl bg-white border border-line flex items-center justify-center shadow-[0_10px_24px_-14px_rgb(15_23_42/0.4)] transition-transform duration-300 group-hover:scale-110">
-                  <img src={tool.icon} alt="" width="36" height="36" className="w-9 h-9 object-contain" loading="lazy" />
+                  {tool.icon ? (
+                    <img src={tool.icon} alt={`${tool.name} logo`} width="36" height="36" className="w-9 h-9 object-contain" loading="lazy" decoding="async" />
+                  ) : (
+                    <AudioLines size={28} className="text-brand-600" aria-hidden="true" />
+                  )}
                 </div>
                 <div className="mt-3.5 text-sm font-semibold text-ink leading-tight">{tool.name}</div>
                 <div className="mt-1 text-[11px] text-ink-3">{tool.category}</div>

@@ -31,7 +31,7 @@ export default function About() {
     '2+ years of hands-on digital & performance marketing experience',
     'Specialized in automotive dealership campaigns (Nissan, Bajaj, Leyland)',
     'End-to-end multi-brand social media calendar planning & publishing',
-    'AI tool mastery: ChatGPT, Claude, Gemini, and AI video generators',
+    'AI-assisted content workflows using tools such as ChatGPT, Claude, Gemini, and video generators',
     'Conversion tracking, lead generation funnels, and reporting',
   ]
 
