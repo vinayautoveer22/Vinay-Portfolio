@@ -9,7 +9,8 @@ export default function usePointerParallax() {
     if (!stage) return undefined
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (reducedMotion.matches) return undefined
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)')
+    if (reducedMotion.matches || !finePointer.matches) return undefined
 
     const move = (event) => {
       if (event.pointerType !== 'mouse') return

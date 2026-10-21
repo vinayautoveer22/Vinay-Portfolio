@@ -6,13 +6,13 @@
 export default function Ambient() {
   // Spread the blinking points across the full ambient layer so they stay
   // visible behind every section while the page scrolls.
-  const particles = Array.from({ length: 56 }, (_, index) => {
+  const particles = Array.from({ length: 32 }, (_, index) => {
     const column = index % 8
     const row = Math.floor(index / 8)
 
     return {
       left: `${2 + column * 12 + ((index * 17) % 7)}%`,
-      top: `${3 + row * 13 + ((index * 11) % 8)}%`,
+      top: `${3 + row * 22 + ((index * 11) % 8)}%`,
       size: index % 4 === 0 ? 4 : 3,
       delay: `${((index * 7) % 36) / 10}s`,
       duration: `${7 + (index % 7) / 2}s`,

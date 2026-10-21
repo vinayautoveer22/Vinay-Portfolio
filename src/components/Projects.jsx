@@ -37,6 +37,7 @@ export default function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedProject, setSelectedProject] = useState(null)
   const [isPaused, setIsPaused] = useState(false)
+  const autoPlayRestricted = window.matchMedia('(prefers-reduced-motion: reduce), (hover: none) and (pointer: coarse)').matches
   const previousProject = useCallback(() => {
     setCurrentIndex((current) =>
       current === 0 ? projects.length - 1 : current - 1
@@ -78,7 +79,7 @@ export default function Projects() {
   }, [previousProject, nextProject, selectedProject])
   // Auto slide
   useEffect(() => {
-    if (isPaused || selectedProject || projects.length <= 1) return
+    if (isPaused || selectedProject || autoPlayRestricted || projects.length <= 1) return
     const interval = setInterval(() => {
       nextProject()
     }, 6000)
@@ -86,6 +87,7 @@ export default function Projects() {
   }, [
     isPaused,
     selectedProject,
+    autoPlayRestricted,
     projects.length,
     nextProject,
   ])
@@ -156,7 +158,9 @@ export default function Projects() {
                     key={currentProject.id}
                     src={currentProject.image}
                     alt={`${currentProject.name} project showcase`}
-                  className={`absolute inset-0 w-full h-full ${currentProject.imageFit === 'contain' ? 'object-contain' : 'object-cover object-top'} fade-in`}
+                    loading="lazy"
+                    decoding="async"
+                    className={`absolute inset-0 w-full h-full ${currentProject.imageFit === 'contain' ? 'object-contain' : 'object-cover object-top'} fade-in`}
                   />
                 ) : (
                   <ProjectBrandVisual project={currentProject} />
@@ -264,9 +268,7 @@ export default function Projects() {
                     )}
                   </div>
                   <span className="text-xs text-ink-3 whitespace-nowrap">
-                    {isPaused
-                      ? 'Paused'
-                      : 'Auto-playing'}
+                    {isPaused ? 'Paused' : autoPlayRestricted ? 'Use arrows to browse' : 'Auto-playing'}
                   </span>
                 </div>
               </div>

@@ -3375,7 +3375,6 @@ header nav a[class*='bg-brand'] {
 
 .card {
   position: relative;
-  transform: translateZ(0);
 }
 
 .card:hover,
@@ -3784,6 +3783,7 @@ select {
     animation: none;
   }
 }
+
 
 /* Keep the closing message and portrait in separate visual lanes. */
 .closing-cta {
@@ -4283,6 +4283,82 @@ html[data-motion-ready='true'] .motion-reveal:not(.is-visible) {
     transform: none;
     transition: none;
     will-change: auto;
+  }
+}
+
+/* Low-power touch devices: avoid continuous decorative work while scrolling. */
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+  .ambient-particles {
+    display: none;
+  }
+
+  .blob {
+    animation: none !important;
+    filter: blur(38px);
+    opacity: 0.18;
+    will-change: auto;
+  }
+
+  .blob-3,
+  .blob-4 {
+    display: none;
+  }
+
+  .glass,
+  .glass-strong,
+  .cta-panel,
+  .media-tile,
+  .ring-gradient,
+  .icon-tile,
+  header > div,
+  .backdrop-blur-2xl,
+  .backdrop-blur-xl,
+  .backdrop-blur-md {
+    -webkit-backdrop-filter: blur(8px) saturate(110%);
+    backdrop-filter: blur(8px) saturate(110%);
+  }
+
+  .card {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.14),
+      0 8px 22px rgb(0 0 0 / 0.24);
+  }
+
+  .motion-reveal {
+    backface-visibility: visible;
+    transition: opacity 240ms ease, transform 260ms ease;
+  }
+
+  html[data-motion-ready='true'] .motion-reveal:not(.is-visible) {
+    filter: none;
+    transform: translate3d(0, 8px, 0);
+  }
+
+  .float-slow {
+    animation: none !important;
+  }
+
+  .card:hover,
+  .media-tile:hover,
+  .media-tile:hover img,
+  .hero-character,
+  .closing-cta-art {
+    transform: none;
+    will-change: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-motion-ready='true'] .motion-reveal:not(.is-visible) {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
+  .motion-reveal {
+    transition: none;
   }
 }
 

@@ -28,6 +28,8 @@ function FreelanceProjectCard({ project, index, whatsappUrl }) {
                 key={active.src}
                 src={active.src}
                 alt={active.alt}
+                loading="lazy"
+                decoding="async"
                 className="h-full w-full object-contain p-1 transition-transform duration-700 group-hover:scale-[1.015]"
               />
             )}

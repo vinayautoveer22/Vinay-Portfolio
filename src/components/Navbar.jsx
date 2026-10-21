@@ -36,30 +36,43 @@ export default function Navbar() {
       { id: 'contact', href: '#contact' },
     ]
 
-    const updateActiveSection = () => {
-      const activationLine = window.scrollY + Math.min(200, window.innerHeight * 0.28)
-      const currentSection = sections
-        .map((section) => ({ ...section, top: document.getElementById(section.id)?.getBoundingClientRect().top + window.scrollY }))
-        .filter((section) => Number.isFinite(section.top) && section.top <= activationLine)
-        .sort((a, b) => b.top - a.top)[0]
+    const trackedSections = sections
+      .map((section) => ({ ...section, element: document.getElementById(section.id) }))
+      .filter((section) => section.element)
+    let frameId = 0
 
-      setActive(currentSection?.href || '')
+    const updateOnFrame = () => {
+      if (frameId) return
+
+      frameId = window.requestAnimationFrame(() => {
+        frameId = 0
+        const scrollY = window.scrollY
+        const activationLine = scrollY + Math.min(200, window.innerHeight * 0.28)
+        const isScrolled = scrollY > 20
+        let currentHref = ''
+        let currentTop = Number.NEGATIVE_INFINITY
+
+        trackedSections.forEach(({ href, element }) => {
+          const top = element.getBoundingClientRect().top + scrollY
+          if (top <= activationLine && top > currentTop) {
+            currentHref = href
+            currentTop = top
+          }
+        })
+
+        setActive((previous) => previous === currentHref ? previous : currentHref)
+        setScrolled((previous) => previous === isScrolled ? previous : isScrolled)
+      })
     }
 
-    updateActiveSection()
-    window.addEventListener('scroll', updateActiveSection, { passive: true })
-    window.addEventListener('resize', updateActiveSection)
+    updateOnFrame()
+    window.addEventListener('scroll', updateOnFrame, { passive: true })
+    window.addEventListener('resize', updateOnFrame, { passive: true })
     return () => {
-      window.removeEventListener('scroll', updateActiveSection)
-      window.removeEventListener('resize', updateActiveSection)
+      window.removeEventListener('scroll', updateOnFrame)
+      window.removeEventListener('resize', updateOnFrame)
+      if (frameId) window.cancelAnimationFrame(frameId)
     }
-  }, [])
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   const whatsappUrl = `https://wa.me/${portfolioData.contact.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(portfolioData.contact.whatsappMessage)}`
