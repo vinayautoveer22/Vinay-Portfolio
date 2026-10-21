@@ -143,7 +143,7 @@ function FreelanceProjectCard({ project, index, whatsappUrl }) {
               <ArrowUpRight size={16} />
             </a>
             <p className="mt-5 text-xs font-medium uppercase tracking-[0.16em] text-ink-3">
-              {images.length} visuals <span className="mx-1">Â·</span> {variants.length} colour options
+              {images.length} visuals <span className="mx-1">&bull;</span> {variants.length} colour options
             </p>
           </div>
         </div>
