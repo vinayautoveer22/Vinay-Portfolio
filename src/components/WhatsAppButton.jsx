@@ -15,7 +15,7 @@ export default function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Chat with Akshay on WhatsApp"
+      aria-label="Chat with Vinay on WhatsApp"
       title="Chat on WhatsApp"
       className="whatsapp-float fixed bottom-6 right-6 z-40 flex items-center gap-3 p-2 sm:pr-5 rounded-full text-ink backdrop-blur-2xl border shadow-[0_18px_40px_-16px_rgb(0_0_0/0.65)] hover:border-[#25d366]/50 transition-colors"
     >

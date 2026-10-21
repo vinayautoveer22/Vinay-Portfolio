@@ -96,7 +96,7 @@ export default function Projects() {
     /[^0-9]/g,
     ''
   )}?text=${encodeURIComponent(
-    `Hi Akshay, I am interested in discussing your portfolio project: ${
+    `Hi Vinay, I am interested in discussing your portfolio project: ${
       (selectedProject || currentProject).name
     }`
   )}`

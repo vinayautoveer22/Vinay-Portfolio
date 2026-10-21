@@ -1,6 +1,6 @@
-# Akshay Kumar Portfolio
+# Vinay Kumar Portfolio
 
-Personal portfolio website for Akshay Kumar, a digital marketer and performance marketing specialist. It showcases services, selected campaigns, creative work, experience, skills, and contact options.
+Personal portfolio website for Vinay Kumar, a digital marketer and performance marketing specialist. It showcases services, selected campaigns, creative work, experience, skills, and contact options.
 
 ## Stack
 
