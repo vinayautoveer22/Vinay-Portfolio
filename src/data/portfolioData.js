@@ -261,7 +261,7 @@ summary:
   experience: [
     {
       company: 'Smart Solution Euler',
-      logo: './company-logos/smart-solution-euler-mark.png',
+      logo: './company-logos/smart-solution-euler.png',
       companyWebsiteUrl: 'https://www.eulermotors.com/en/',
       role: 'Digital Marketing Specialist',
       period: 'October 2026 – Present',
@@ -277,7 +277,7 @@ summary:
     },
     {
       company: 'Autoveer',
-      logo: './company-logos/autoveer-mark.png',
+      logo: './company-logos/autoveer.jpg',
       role: 'Digital Marketing Executive',
       period: 'Previous',
       colorTheme: 'ice-blue',
@@ -292,7 +292,7 @@ summary:
     },
     {
       company: 'Bike Blazer',
-      logo: './company-logos/bike-blazer-mark.png',
+      logo: './company-logos/cyton-mv.jpg',
       role: 'Digital Marketing Executive',
       period: 'Previous',
       colorTheme: 'mint',
@@ -306,7 +306,7 @@ summary:
     },
     {
       company: 'LF Fashion Studio',
-      logo: './company-logos/lf-fashion-studio-mark.png',
+      logo: './company-logos/lf-fashion-studio.jpg',
       role: 'Social Media Executive',
       period: 'Previous',
       colorTheme: 'lavender',
