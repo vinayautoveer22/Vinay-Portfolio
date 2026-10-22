@@ -185,7 +185,7 @@ export default function CampaignPerformance() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-sm font-semibold text-ink">Lead results by campaign</p>
-                  <p className="mt-1 text-xs text-ink-3">Highest reported lead counts Â· select a bar to inspect</p>
+                  <p className="mt-1 text-xs text-ink-3">Highest reported lead counts· select a bar to inspect</p>
                 </div>
                 <BarChart3 size={18} className="shrink-0 text-cyan-200" />
               </div>
