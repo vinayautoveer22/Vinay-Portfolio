@@ -411,7 +411,7 @@ summary:
     { name: 'Meta Business Suite', icon: './icons/metabusinesssuite.webp', category: 'Page Manager' },
     { name: 'SMM Panel One', icon: './icons/smmpanelone.webp', category: 'Social Tools' },
     { name: 'Google Flow', icon: './icons/googleflow.webp', category: 'AI Video' },
-    { name: 'Interakt', icon: './icons/Interakt.png', category: 'Messaging (Learning)' },
+    { name: 'Interakt', icon: './icons/Interakt.png', category: 'Messaging' },
     { name: 'Meta Reach', icon: './icons/metareach.jpg', category: 'Meta Tool' },
     { name: 'ElevenLabs', icon: './icons/elevenlabs.svg', category: 'Voice-over' },
   ],
