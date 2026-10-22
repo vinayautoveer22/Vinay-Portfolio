@@ -7,8 +7,7 @@ import { portfolioData } from '../data/portfolioData'
  * Skill domains, everyday tools (with logos), and education.
  */
 export default function Skills() {
-  const featuredTools = portfolioData.tools.slice(0, 8)
-  const additionalTools = portfolioData.tools.slice(8)
+  const tools = portfolioData.tools
 
   return (
     <section id="skills" className="relative py-24 lg:py-32">
@@ -46,7 +45,7 @@ export default function Skills() {
           <p className="mt-1.5 text-sm text-ink-3">Top platforms across advertising, social media, AI, and content.</p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-7">
-            {featuredTools.map((tool) => (
+            {tools.map((tool) => (
               <div key={tool.name} className="tool-card card group h-full p-5 flex flex-col items-center text-center">
                 <div className="tool-icon w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                   {tool.icon ? (
@@ -61,13 +60,6 @@ export default function Skills() {
             ))}
           </div>
 
-          {additionalTools.length > 0 && (
-            <ul className="more-tools-list mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm leading-7 text-ink-2">
-              {additionalTools.map((tool) => (
-                <li key={tool.name}>{tool.name} — {tool.category}</li>
-              ))}
-            </ul>
-          )}
         </div>
 
         {/* Education */}

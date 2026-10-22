@@ -150,8 +150,8 @@ export default function CampaignPerformance() {
                         className={`flex w-full items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-left text-xs transition-colors ${isSelected ? 'bg-cyan-400/15 text-cyan-100' : 'text-slate-200 hover:bg-white/10 hover:text-white'}`}
                       >
                         <span className="truncate">{campaign.name}</span>
-                        <span className={`shrink-0 text-[10px] ${campaign.status === 'Active' ? 'text-emerald-300' : 'text-slate-400'}`}>
-                          {campaign.status}
+                        <span className="shrink-0 text-[10px] text-slate-400">
+                          Snapshot
                         </span>
                       </button>
                     )
@@ -163,9 +163,8 @@ export default function CampaignPerformance() {
 
           <div key={selected.id} className="mt-6 fade-up">
             <div className="mb-4 flex flex-wrap items-center gap-2">
-              <span className={`h-2 w-2 rounded-full ${selected.status === 'Active' ? 'bg-emerald-400' : 'bg-slate-400'}`} />
               <span className="text-sm font-semibold text-ink">{selected.name}</span>
-              <span className="chip !px-2.5 !py-1 text-[10px]">{selected.status}</span>
+              <span className="chip !px-2.5 !py-1 text-[10px]">Reported snapshot</span>
             </div>
 
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
@@ -271,7 +270,7 @@ export default function CampaignPerformance() {
                 <thead className="text-[10px] uppercase tracking-[0.12em] text-ink-3">
                   <tr>
                     <th className="px-5 py-3 font-semibold">Campaign</th>
-                    <th className="px-4 py-3 font-semibold">Status</th>
+                    <th className="px-4 py-3 font-semibold">Record</th>
                     <th className="px-4 py-3 text-right font-semibold">Results</th>
                     <th className="px-4 py-3 text-right font-semibold">Reach</th>
                     <th className="px-4 py-3 text-right font-semibold">Link clicks</th>
@@ -282,7 +281,7 @@ export default function CampaignPerformance() {
                   {campaigns.map((campaign) => (
                     <tr key={campaign.id} className="border-t border-white/[0.06] transition-colors hover:bg-white/[0.035]">
                       <td className="px-5 py-3.5 font-medium text-ink">{campaign.name}</td>
-                      <td className="px-4 py-3.5 text-ink-3">{campaign.status}</td>
+                      <td className="px-4 py-3.5 text-ink-3">Snapshot</td>
                       <td className="px-4 py-3.5 text-right tabular-nums text-ink">{numberFormat.format(campaign.results)} <span className="text-ink-3">{campaign.resultType}</span></td>
                       <td className="px-4 py-3.5 text-right tabular-nums text-ink-2">{numberFormat.format(campaign.reach)}</td>
                       <td className="px-4 py-3.5 text-right tabular-nums text-ink-2">{numberFormat.format(campaign.linkClicks)}</td>
