@@ -106,7 +106,7 @@ export default function CampaignPerformance() {
           description="Selected Meta Ads results across automotive, hospitality and hiring campaigns."
         />
 
-        <div className="glass ring-gradient mt-12 overflow-visible rounded-[30px] p-4 sm:p-6 lg:p-8">
+        <div className="campaign-dashboard glass ring-gradient mt-12 min-w-0 overflow-visible rounded-[30px] p-4 sm:p-6 lg:p-8">
           <div className="flex flex-col gap-5 border-b border-line pb-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-300/15 bg-cyan-300/10 text-cyan-200">
@@ -224,7 +224,7 @@ export default function CampaignPerformance() {
                 <p className="mt-1 text-xs text-ink-3">{selected.name}</p>
               </div>
               <div className="my-4 flex flex-1 items-center justify-center">
-                <div className="relative h-44 w-44">
+                <div className="campaign-chart-ring relative h-44 w-44">
                   <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90 overflow-visible">
                     <circle cx="60" cy="60" r="44" fill="none" stroke="rgb(255 255 255 / 0.08)" strokeWidth="12" />
                     <circle

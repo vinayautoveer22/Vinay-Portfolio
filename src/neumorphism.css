@@ -314,9 +314,16 @@ small,
 }
 
 .campaign-details > div {
+  min-width: 0;
+  max-width: 100%;
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
+}
+
+.campaign-details > div > div {
+  min-width: 0;
+  max-width: 100%;
 }
 
 input,
@@ -505,6 +512,43 @@ footer p {
 
 /* Compact layouts for narrow phones and watch-sized viewports. */
 @media (max-width: 360px) {
+  #campaign-results,
+  #campaign-results > .relative,
+  .campaign-dashboard,
+  .campaign-details,
+  .campaign-details > div,
+  .campaign-details > div > div {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .campaign-dashboard {
+    padding: 12px !important;
+  }
+
+  .campaign-details > summary {
+    gap: 8px !important;
+    padding: 12px !important;
+    font-size: 14px !important;
+  }
+
+  .campaign-details > div {
+    grid-template-columns: minmax(0, 1fr) !important;
+    padding: 10px !important;
+  }
+
+  .campaign-details > div > div {
+    min-width: 0 !important;
+    width: 100%;
+    padding: 12px !important;
+  }
+
+  .campaign-chart-ring {
+    width: min(42vw, 128px) !important;
+    height: auto !important;
+    aspect-ratio: 1;
+  }
+
   .site-navbar {
     width: calc(100vw - 12px) !important;
     max-width: calc(100vw - 12px) !important;
