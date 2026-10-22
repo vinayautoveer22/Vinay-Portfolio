@@ -44,8 +44,8 @@ html.show-portfolio-intro body {
 .portfolio-intro-scene {
   position: relative;
   display: grid;
-  width: 504px;
-  height: 504px;
+  width: 520px;
+  height: 520px;
   flex: 0 0 auto;
   place-items: center;
 }
@@ -54,16 +54,16 @@ html.show-portfolio-intro body {
   position: relative;
   z-index: 2;
   display: grid;
-  width: 340px;
-  height: 340px;
+  width: 380px;
+  height: 380px;
   place-items: center;
   animation: portfolio-intro-float 2.5s ease-in-out infinite;
 }
 
 .portfolio-intro-character img {
   display: block;
-  width: 340px;
-  height: 340px;
+  width: 380px;
+  height: 380px;
   object-fit: contain;
   opacity: 0;
   animation: portfolio-intro-appear 500ms ease-out 100ms forwards;
@@ -97,15 +97,13 @@ html.show-portfolio-intro body {
 
 .portfolio-intro-badge {
   display: grid;
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   place-items: center;
-  border: 1px solid rgb(255 255 255 / 12%);
+  border: 1px solid rgb(255 255 255 / 92%);
   border-radius: 50%;
-  background: rgb(22 18 58 / 70%);
-  box-shadow: 0 0 18px rgb(124 92 255 / 25%);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background: #fff;
+  box-shadow: 0 5px 20px rgb(124 92 255 / 22%), 0 2px 8px rgb(0 0 0 / 18%);
   transform: translate(-50%, -50%) rotate(calc(0deg - var(--angle)));
   animation: portfolio-intro-counter-rotate 20s linear infinite;
 }
@@ -120,8 +118,8 @@ html.show-portfolio-intro body {
 
 .portfolio-intro-logo {
   display: block;
-  width: 25px;
-  height: 25px;
+  width: 32px;
+  height: 32px;
   flex: 0 0 auto;
   opacity: 1;
   object-fit: contain;
@@ -129,8 +127,8 @@ html.show-portfolio-intro body {
 }
 
 .portfolio-intro-orbit-item:last-child .portfolio-intro-logo {
-  width: 31px;
-  height: 31px;
+  width: 36px;
+  height: 36px;
 }
 
 .portfolio-intro-tagline {
@@ -235,14 +233,14 @@ html.show-portfolio-intro body {
 
 @media (min-width: 601px) and (max-width: 900px) {
   .portfolio-intro-scene {
-    width: 416px;
-    height: 416px;
+    width: 440px;
+    height: 440px;
   }
 
   .portfolio-intro-character,
   .portfolio-intro-character img {
-    width: 260px;
-    height: 260px;
+    width: 300px;
+    height: 300px;
   }
 
   .portfolio-intro-orbit-ring {
@@ -267,8 +265,8 @@ html.show-portfolio-intro body {
 
   .portfolio-intro-character,
   .portfolio-intro-character img {
-    width: min(220px, calc(100vw - 112px));
-    height: min(220px, calc(100vw - 112px));
+    width: min(250px, calc(100vw - 86px));
+    height: min(250px, calc(100vw - 86px));
   }
 
   .portfolio-intro-orbit-ring {
@@ -281,18 +279,18 @@ html.show-portfolio-intro body {
   }
 
   .portfolio-intro-badge {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
   }
 
   .portfolio-intro-logo {
-    width: 21px;
-    height: 21px;
+    width: 27px;
+    height: 27px;
   }
 
   .portfolio-intro-orbit-item:last-child .portfolio-intro-logo {
-    width: 27px;
-    height: 27px;
+    width: 31px;
+    height: 31px;
   }
 
   .portfolio-intro-tagline {

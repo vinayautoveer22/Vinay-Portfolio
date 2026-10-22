@@ -316,16 +316,16 @@ small {
 }
 
 .tool-icon {
-  width: 68px;
-  height: 68px;
+  width: 64px;
+  height: 64px;
   background: rgb(255 255 255 / 0.96);
   border: 1px solid var(--border);
   box-shadow: 0 8px 24px rgb(3 2 18 / 0.24);
 }
 
 .tool-icon img {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
 }
 
 .metric-card {
