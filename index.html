@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preload" as="image" href="./character.webp" fetchpriority="high" />
+    <link rel="stylesheet" href="/src/firstVisitLoader.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
@@ -19,9 +21,80 @@
     <meta property="og:title" content="Vinay Kumar | Digital Marketing Specialist" />
     <meta property="og:description" content="Digital marketing focused on paid advertising, lead generation, social media, campaign monitoring, and creative content." />
     <meta property="og:type" content="website" />
+    <script>
+      (() => {
+        try {
+          if (sessionStorage.getItem('vinay-portfolio-intro-seen')) return
+          sessionStorage.setItem('vinay-portfolio-intro-seen', '1')
+          document.documentElement.classList.add('show-portfolio-intro')
+        } catch {
+          // If session storage is unavailable, skip the intro rather than risk blocking the page.
+        }
+      })()
+    </script>
   </head>
   <body>
+    <div id="portfolio-first-visit" class="portfolio-intro" aria-hidden="true" hidden>
+      <div class="portfolio-intro-glow"></div>
+      <div class="portfolio-intro-content">
+        <div class="portfolio-intro-character">
+          <img src="./character.webp" alt="" width="220" height="220" fetchpriority="high" />
+        </div>
+        <p class="portfolio-intro-tagline">Think. Create. <span>Grow.</span></p>
+        <div class="portfolio-intro-progress" role="presentation">
+          <span class="portfolio-intro-progress-fill"></span>
+        </div>
+      </div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      (() => {
+        const overlay = document.getElementById('portfolio-first-visit')
+        if (!document.documentElement.classList.contains('show-portfolio-intro')) return
+
+        overlay.hidden = false
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        let pageLoaded = document.readyState === 'complete'
+        let progressComplete = reducedMotion
+        let dismissed = false
+
+        const finish = (force = false) => {
+          if (dismissed) return
+          dismissed = true
+          overlay.classList.add('is-hidden')
+          if (force || reducedMotion) {
+            overlay.hidden = true
+            document.documentElement.classList.remove('show-portfolio-intro')
+            return
+          }
+          window.setTimeout(() => {
+            overlay.hidden = true
+            document.documentElement.classList.remove('show-portfolio-intro')
+          }, 400)
+        }
+
+        const dismissWhenReady = () => {
+          if (pageLoaded && progressComplete) finish()
+        }
+
+        window.addEventListener('load', () => {
+          pageLoaded = true
+          dismissWhenReady()
+        }, { once: true })
+
+        if (reducedMotion) {
+          overlay.classList.add('motion-reduced')
+        } else {
+          window.setTimeout(() => {
+            progressComplete = true
+            dismissWhenReady()
+          }, 1200)
+        }
+
+        window.setTimeout(() => finish(true), 2000)
+        dismissWhenReady()
+      })()
+    </script>
   </body>
 </html>
