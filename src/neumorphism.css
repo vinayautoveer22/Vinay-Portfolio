@@ -30,6 +30,11 @@ body,
   background: var(--bg) !important;
 }
 
+.site-navbar {
+  position: fixed !important;
+  z-index: 10000 !important;
+}
+
 body {
   background-image: none !important;
 }
@@ -569,6 +574,9 @@ footer p {
   }
 
   .site-navbar {
+    position: fixed !important;
+    z-index: 10000 !important;
+    top: max(12px, env(safe-area-inset-top)) !important;
     width: calc(100vw - 12px) !important;
     max-width: calc(100vw - 12px) !important;
   }
