@@ -391,6 +391,8 @@ textarea::placeholder {
 
 .closing-cta-work {
   border-radius: 999px;
+  padding-inline: 14px;
+  gap: 9px;
 }
 
 .whatsapp-float {
