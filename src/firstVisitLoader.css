@@ -108,14 +108,6 @@ html.show-portfolio-intro body {
   animation: portfolio-intro-counter-rotate 20s linear infinite;
 }
 
-.portfolio-intro-orbit-item:last-child .portfolio-intro-badge {
-  border-color: transparent;
-  background: transparent;
-  box-shadow: none;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
-
 .portfolio-intro-logo {
   display: block;
   width: 32px;
@@ -124,11 +116,6 @@ html.show-portfolio-intro body {
   opacity: 1;
   object-fit: contain;
   border-radius: 50%;
-}
-
-.portfolio-intro-orbit-item:last-child .portfolio-intro-logo {
-  width: 36px;
-  height: 36px;
 }
 
 .portfolio-intro-tagline {
@@ -286,11 +273,6 @@ html.show-portfolio-intro body {
   .portfolio-intro-logo {
     width: 27px;
     height: 27px;
-  }
-
-  .portfolio-intro-orbit-item:last-child .portfolio-intro-logo {
-    width: 31px;
-    height: 31px;
   }
 
   .portfolio-intro-tagline {
