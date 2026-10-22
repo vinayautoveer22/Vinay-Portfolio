@@ -44,7 +44,7 @@ export default function Skills() {
           <h3 className="text-xl sm:text-2xl font-bold text-ink">Tools & platforms</h3>
           <p className="mt-1.5 text-sm text-ink-3">Top platforms across advertising, social media, AI, and content.</p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-7">
+          <div className="tools-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mt-7">
             {tools.map((tool) => (
               <div key={tool.name} className="tool-card card group h-full p-5 flex flex-col items-center text-center">
                 <div className="tool-icon w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110">

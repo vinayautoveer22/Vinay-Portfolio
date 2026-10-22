@@ -240,8 +240,8 @@ export default function CampaignPerformance() {
                     </defs>
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-3xl font-bold tabular-nums text-ink">{Math.round(linkShare * 100)}%</span>
-                    <span className="mt-1 text-[10px] uppercase tracking-[0.12em] text-ink-3">link clicks</span>
+                    <span className="campaign-chart-value text-3xl font-bold tabular-nums text-ink">{Math.round(linkShare * 100)}%</span>
+                    <span className="campaign-chart-label mt-1 text-[10px] uppercase tracking-[0.12em] text-ink-3">link clicks</span>
                   </div>
                 </div>
               </div>
