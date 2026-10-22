@@ -30,11 +30,11 @@ export default function Hero() {
               {portfolioData.heroTitle}
             </p>
 
-            <p className="mt-3 text-sm sm:text-base font-medium text-brand-700 leading-relaxed">
+            <p className="hero-tagline mt-3 text-sm sm:text-base font-medium leading-relaxed">
               {portfolioData.tagline}
             </p>
 
-            <p className="mt-5 text-base sm:text-lg text-ink-2 leading-relaxed max-w-2xl">
+            <p className="hero-summary mt-5 text-base sm:text-lg text-ink-2 leading-relaxed max-w-2xl">
               {portfolioData.summary}
             </p>
 

@@ -56,18 +56,6 @@ export default function Services() {
           })}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-12 cta-panel px-7 py-8 lg:px-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="orb w-72 h-72 -right-16 -top-24 bg-white/25" />
-          <div className="relative">
-            <p className="text-xs uppercase tracking-[0.2em] text-white/80 font-bold">Have a project in mind?</p>
-            <h3 className="mt-2 text-2xl lg:text-3xl font-bold text-white">Let's turn your next idea into something that performs.</h3>
-          </div>
-          <a href="#contact" className="btn btn-light relative shrink-0 px-6 py-3.5">
-            Let's Talk
-            <ArrowUpRight size={17} />
-          </a>
-        </div>
       </div>
     </section>
   )

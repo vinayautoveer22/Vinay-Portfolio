@@ -20,17 +20,17 @@ export default function ClosingCTA() {
           </div>
 
           <h2 id="closing-title" className="closing-cta-title">
-            Let’s make
+            Let's make
             <span>something grow.</span>
           </h2>
 
           <p className="closing-cta-copy">
-            Have a campaign, a brand, or a big idea in mind? Let’s turn it into measurable momentum.
+            Have a campaign, a brand, or a big idea in mind? Let's turn it into measurable momentum.
           </p>
 
           <div className="closing-cta-actions">
             <a className="closing-cta-button" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-              Let’s talk about your project <ArrowUpRight size={17} />
+              Let's talk about your project <ArrowUpRight size={17} />
             </a>
             <a className="closing-cta-work" href="#projects">
               Explore selected work <MoveUpRight size={15} />

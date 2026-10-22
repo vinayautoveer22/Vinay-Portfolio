@@ -110,7 +110,7 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 className={`px-3.5 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
-                  active === link.href ? 'text-brand-700 bg-white shadow-[0_4px_12px_-6px_rgb(15_23_42/0.3)]' : 'text-ink-2 hover:text-ink'
+                  active === link.href ? 'nav-link-active text-brand-700 bg-white shadow-[0_4px_12px_-6px_rgb(15_23_42/0.3)]' : 'text-ink-2 hover:text-ink'
                 }`}
               >
                 {link.label}
@@ -159,7 +159,7 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={`px-4 py-3 rounded-2xl text-base font-medium ${
-                  active === link.href ? 'text-brand-700 bg-brand-50' : 'text-ink-2 hover:bg-white/70'
+                  active === link.href ? 'nav-link-active text-brand-700 bg-brand-50' : 'text-ink-2 hover:bg-white/70'
                 }`}
               >
                 {link.label}

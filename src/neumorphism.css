@@ -1,56 +1,63 @@
-/* Neumorphism preview inspired by luminous, translucent dark glass surfaces. */
 :root {
   color-scheme: dark;
-  --neo-canvas: #100a35;
-  --neo-surface: rgb(48 39 91 / 0.66);
-  --neo-text: #f7f3ff;
-  --neo-muted: #c4bddb;
-  --neo-shadow-dark: rgb(5 3 28 / 0.56);
-  --neo-shadow-light: rgb(255 255 255 / 0.19);
-  --neo-blue: #75e4ff;
-  --neo-pink: #ff398e;
-  --neo-orange: #ffad31;
+  --bg: #0B0820;
+  --bg-alt: #110D2E;
+  --surface: #16123A;
+  --border: rgba(255,255,255,0.08);
+  --primary-grad: linear-gradient(135deg, #FF8A00, #FF2E7E);
+  --highlight-grad: linear-gradient(110deg, #7C5CFF 0%, #FF2E7E 100%);
+  --purple: #7C5CFF;
+  --text-heading: #FFFFFF;
+  --text-body: #B8B5D6;
+  --text-subtle: #C9C6F0;
+  --whatsapp: #25D366;
+
+  --color-canvas: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--text-heading);
+  --color-ink-2: var(--text-body);
+  --color-ink-3: var(--text-subtle);
+  --color-brand-500: var(--purple);
+  --color-brand-600: var(--purple);
+  --color-line: var(--border);
 }
 
 html,
 body,
 #root {
   min-height: 100%;
-  background: var(--neo-canvas) !important;
-  color: var(--neo-text) !important;
+  color: var(--text-heading) !important;
+  background: var(--bg) !important;
 }
 
 body {
-  background-image:
-    radial-gradient(ellipse at 4% 36%, rgb(53 28 119 / 0.84), transparent 42%),
-    radial-gradient(ellipse at 94% 27%, rgb(11 44 133 / 0.7), transparent 39%),
-    linear-gradient(135deg, #100a35 0%, #21114a 48%, #080e35 100%) !important;
-  background-attachment: fixed !important;
+  background-image: none !important;
 }
 
 body::before {
   position: fixed;
   z-index: 0;
   pointer-events: none;
+  inset: -8%;
   background:
-    radial-gradient(circle at 8% 8%, rgb(255 165 38 / 0.92) 0 25px, rgb(255 55 133 / 0.8) 27px 72px, transparent 74px),
-    radial-gradient(circle at 97% 12%, rgb(255 50 132 / 0.86) 0 28px, rgb(255 155 35 / 0.78) 30px 80px, transparent 82px),
-    radial-gradient(ellipse at 4% 88%, rgb(252 55 145 / 0.55), transparent 23%),
-    radial-gradient(ellipse at 91% 94%, rgb(255 169 38 / 0.62), transparent 20%),
-    radial-gradient(ellipse at 52% 52%, rgb(95 65 166 / 0.28), transparent 52%) !important;
-  opacity: 0.75 !important;
+    radial-gradient(ellipse 30% 27% at 7% 12%, rgb(124 92 255 / 0.2), transparent 75%),
+    radial-gradient(ellipse 32% 26% at 94% 24%, rgb(124 92 255 / 0.17), transparent 75%),
+    radial-gradient(ellipse 38% 30% at 55% 95%, rgb(124 92 255 / 0.12), transparent 76%) !important;
+  filter: blur(90px);
+  opacity: 0.7 !important;
 }
 
-/* Keep the decorative treatment lightweight and preserve the existing page layout. */
 .ambient-grid,
 .ambient-particles,
 .ambient-particle,
-.blob {
+.blob,
+.orb,
+.closing-cta-grid {
   display: none !important;
 }
 
 .ambient {
-  opacity: 0.35 !important;
+  opacity: 0.16 !important;
 }
 
 main,
@@ -61,7 +68,44 @@ footer,
   z-index: 1;
 }
 
-/* Frosted surfaces with soft raised edges and deep ambient shadow. */
+main > section {
+  background-color: var(--bg) !important;
+  padding-block: 80px !important;
+}
+
+main > section:nth-child(even) {
+  background-color: var(--bg-alt) !important;
+}
+
+main > section:first-child {
+  padding-top: 142px !important;
+  padding-bottom: 80px !important;
+}
+
+main > section:first-child h1 {
+  font-size: clamp(2rem, 7.5vw, 4.4rem) !important;
+}
+
+main > section:first-child .grid > div:first-child {
+  min-width: 0;
+  width: min(100%, calc(100vw - 2rem)) !important;
+}
+
+.hero-tagline,
+.hero-summary {
+  width: min(100%, calc(100vw - 2rem)) !important;
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+
+#contact,
+.closing-cta {
+  background-color: var(--bg-alt) !important;
+}
+
+/* Frosted panels stay dark, legible, and quiet behind the content. */
 .glass,
 .glass-strong,
 .card,
@@ -70,52 +114,29 @@ footer,
 #experience .experience-tab,
 header > div,
 nav[aria-label],
-footer .glass {
-  color: var(--neo-text) !important;
-  background:
-    linear-gradient(138deg, rgb(255 255 255 / 0.17), rgb(255 255 255 / 0.045) 48%, rgb(7 7 35 / 0.26)),
-    var(--neo-surface) !important;
-  border: 1px solid rgb(255 255 255 / 0.36) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(145%) !important;
-  backdrop-filter: blur(20px) saturate(145%) !important;
-  box-shadow:
-    inset 1px 1px 0 rgb(255 255 255 / 0.34),
-    inset -1px -1px 0 rgb(8 5 37 / 0.22),
-    12px 16px 34px var(--neo-shadow-dark),
-    -5px -5px 22px rgb(255 255 255 / 0.075) !important;
+footer .glass,
+.metric-card,
+.campaign-details,
+.campaign-details > div > div {
+  color: var(--text-heading) !important;
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
+  backdrop-filter: blur(16px) saturate(120%) !important;
+  box-shadow: 0 16px 40px rgb(3 2 18 / 0.22), inset 0 1px 0 rgb(255 255 255 / 0.035) !important;
 }
 
 .card,
 .glass,
 .glass-strong {
-  border-radius: 1.4rem;
-}
-
-.card::before,
-.card::after,
-.glass::before,
-.glass::after {
-  opacity: 0.35 !important;
+  border-radius: 18px;
 }
 
 .card:hover,
 .glass:hover {
-  transform: translateY(-3px) !important;
-  border-color: rgb(255 255 255 / 0.52) !important;
-  box-shadow:
-    inset 1px 1px 0 rgb(255 255 255 / 0.42),
-    15px 20px 38px rgb(5 3 28 / 0.64),
-    0 0 28px rgb(93 100 255 / 0.16) !important;
-}
-
-.card:active,
-.btn:active,
-.arrow-btn:active,
-.icon-tile:active {
-  box-shadow:
-    inset 5px 5px 12px rgb(5 3 28 / 0.52),
-    inset -4px -4px 10px rgb(255 255 255 / 0.16) !important;
-  transform: translateY(1px);
+  transform: translateY(-2px) !important;
+  border-color: rgb(124 92 255 / 0.4) !important;
+  box-shadow: 0 18px 42px rgb(3 2 18 / 0.3), 0 0 24px rgb(124 92 255 / 0.08) !important;
 }
 
 .text-ink,
@@ -123,85 +144,250 @@ footer .glass {
 .text-slate-100,
 .text-slate-200,
 .text-slate-300 {
-  color: var(--neo-text) !important;
+  color: var(--text-heading) !important;
 }
 
 .text-ink-2,
-.text-ink-3,
-.text-white\/80,
-.text-white\/70,
-.text-white\/60 {
-  color: var(--neo-muted) !important;
+.text-ink-3 {
+  color: var(--text-body) !important;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  color: #fffaff;
+.text-brand-700,
+.text-brand-600 {
+  color: var(--text-subtle) !important;
 }
 
+.text-gradient {
+  background-image: var(--highlight-grad) !important;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-tagline {
+  color: var(--text-subtle) !important;
+  font-weight: 500 !important;
+}
+
+.eyebrow,
 .chip,
-.status-pill,
-.experience-date,
-.experience-role {
-  color: #ffd5eb !important;
-  background: linear-gradient(135deg, rgb(255 255 255 / 0.17), rgb(255 255 255 / 0.055)) !important;
-  border-color: rgb(255 255 255 / 0.34) !important;
-  box-shadow:
-    inset 1px 1px 0 rgb(255 255 255 / 0.3),
-    4px 5px 12px rgb(5 3 28 / 0.36) !important;
+.status-pill {
+  color: var(--text-subtle) !important;
+  background: rgb(124 92 255 / 0.15) !important;
+  border-color: rgb(124 92 255 / 0.24) !important;
+}
+
+.btn-primary,
+.closing-cta-button {
+  color: #fff !important;
+  background: var(--primary-grad) !important;
+  border: 1px solid rgb(255 255 255 / 0.1) !important;
+  box-shadow: 0 12px 30px rgb(255 46 126 / 0.35) !important;
+}
+
+.btn-primary:hover,
+.closing-cta-button:hover {
+  color: #fff !important;
+  filter: brightness(1.08);
+  box-shadow: 0 15px 36px rgb(255 46 126 / 0.4) !important;
 }
 
 .btn-glass,
 .btn-secondary,
-.arrow-btn,
-.icon-tile,
-.brand-mark,
-.experience-initials {
-  color: #d8ceff !important;
-  background: linear-gradient(145deg, rgb(255 255 255 / 0.2), rgb(255 255 255 / 0.055)) !important;
-  border: 1px solid rgb(255 255 255 / 0.38) !important;
-  box-shadow:
-    inset 1px 1px 0 rgb(255 255 255 / 0.34),
-    6px 7px 15px rgb(5 3 28 / 0.4),
-    -3px -3px 10px rgb(255 255 255 / 0.08) !important;
+.closing-cta-work,
+.arrow-btn {
+  color: var(--text-heading) !important;
+  background: transparent !important;
+  border: 1px solid rgb(255 255 255 / 0.15) !important;
+  box-shadow: none !important;
 }
 
-.btn-primary {
-  color: #fff !important;
-  background: linear-gradient(108deg, #ffb12f, #ff5b69 52%, #ed288c) !important;
-  border: 1px solid rgb(255 255 255 / 0.42) !important;
-  box-shadow:
-    inset 1px 1px 0 rgb(255 255 255 / 0.4),
-    8px 10px 22px rgb(5 3 28 / 0.44),
-    0 0 24px rgb(255 67 139 / 0.26) !important;
+.btn-glass:hover,
+.btn-secondary:hover,
+.closing-cta-work:hover,
+.arrow-btn:hover {
+  border-color: rgb(255 255 255 / 0.4) !important;
+  background: rgb(255 255 255 / 0.045) !important;
 }
 
-.btn-primary:hover {
+.brand-mark {
   color: #fff !important;
-  filter: brightness(1.1) saturate(1.08);
-  box-shadow:
-    inset 1px 1px 0 rgb(255 255 255 / 0.48),
-    10px 12px 25px rgb(5 3 28 / 0.5),
-    0 0 32px rgb(255 67 139 / 0.4) !important;
+  background: var(--purple) !important;
+}
+
+header {
+  background: transparent !important;
+}
+
+header > div {
+  background: rgb(22 18 58 / 0.6) !important;
+  border-color: var(--border) !important;
+}
+
+nav[aria-label] {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.nav-link-active {
+  color: #FF8A00 !important;
+  background: transparent !important;
+}
+
+.eyebrow { font-size: 14px !important; }
+
+small,
+.text-xs,
+[class*="text-[10px]"],
+[class*="text-[11px]"] {
+  color: var(--text-body) !important;
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+}
+
+.hero-character-stage > .glass {
+  border-color: rgb(124 92 255 / 0.4) !important;
+  box-shadow: 0 0 48px rgb(124 92 255 / 0.18), inset 0 1px 0 rgb(255 255 255 / 0.06) !important;
+}
+
+.hero-character-stage > div:nth-child(2) {
+  background: radial-gradient(circle, rgb(124 92 255 / 0.2), transparent 70%) !important;
+  filter: blur(80px) !important;
+}
+
+.hero-character-stage .glass:not(:first-child) {
+  color: var(--text-heading) !important;
+  background: rgb(22 18 58 / 0.7) !important;
+  border-color: var(--border) !important;
+}
+
+.hero-character-stage .text-xs,
+.hero-character-stage .text-sm {
+  color: var(--text-heading) !important;
+}
+
+.tool-card {
+  min-height: 160px;
+}
+
+.tool-icon {
+  width: 68px;
+  height: 68px;
+  background: rgb(255 255 255 / 0.96);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgb(3 2 18 / 0.24);
+}
+
+.tool-icon img {
+  width: 44px;
+  height: 44px;
+}
+
+.metric-card {
+  min-height: 178px;
+  border-radius: 18px;
+}
+
+.metric-card > div > span:first-child,
+.metric-card > p:last-child,
+.campaign-details :is(p, span, summary) {
+  color: var(--text-body) !important;
+}
+
+.metric-card > p:nth-child(2) {
+  background-image: var(--highlight-grad);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.campaign-details > summary {
+  min-height: 58px;
+  color: var(--text-heading) !important;
+}
+
+.campaign-details > div {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
 input,
 textarea,
-select,
-[role='combobox'] {
-  color: var(--neo-text) !important;
-  background: linear-gradient(150deg, rgb(17 12 55 / 0.55), rgb(77 63 122 / 0.3)) !important;
-  border: 1px solid rgb(255 255 255 / 0.28) !important;
-  box-shadow:
-    inset 5px 5px 12px rgb(6 4 31 / 0.43),
-    inset -3px -3px 9px rgb(255 255 255 / 0.095) !important;
+select {
+  color: var(--text-heading) !important;
+  background: var(--bg-alt) !important;
+  border: 1px solid var(--border) !important;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #c0b6d7 !important;
+  color: var(--text-body) !important;
+}
+
+#contact .orb {
+  display: block !important;
+  background: rgb(124 92 255 / 0.12) !important;
+  filter: blur(105px) !important;
+  opacity: 0.6 !important;
+}
+
+.closing-cta {
+  min-height: 0 !important;
+  padding: 64px 0 72px !important;
+  background-image: radial-gradient(ellipse at 50% 35%, rgb(124 92 255 / 0.08), transparent 65%) !important;
+}
+
+.closing-cta-inner {
+  min-height: 360px !important;
+}
+
+.closing-cta-glow {
+  opacity: 0.11 !important;
+  background: var(--purple) !important;
+}
+
+.closing-cta-kicker {
+  color: var(--text-subtle) !important;
+  background: rgb(124 92 255 / 0.15) !important;
+  border-color: var(--border) !important;
+  font-size: 14px !important;
+}
+
+.closing-cta-title,
+.closing-cta-title span {
+  color: var(--text-heading) !important;
+}
+
+.closing-cta-title span {
+  background: linear-gradient(110deg, #7C5CFF, #FF2E7E);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.closing-cta-copy {
+  color: var(--text-body) !important;
+  font-size: 16px !important;
+}
+
+.closing-cta-button {
+  border-radius: 999px;
+}
+
+.closing-cta-work {
+  border-radius: 999px;
+}
+
+.whatsapp-float {
+  color: var(--text-heading) !important;
+  background: rgb(22 18 58 / 0.88) !important;
+  border-color: var(--border) !important;
+}
+
+.whatsapp-float .text-ink-3 {
+  color: var(--text-body) !important;
+  font-size: 14px !important;
 }
 
 button:focus-visible,
@@ -209,39 +395,106 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 3px solid rgb(117 228 255 / 0.78) !important;
+  outline: 3px solid rgb(124 92 255 / 0.75) !important;
   outline-offset: 3px;
+}
+
+/* Card copy and secondary text stay readable at phone sizes. */
+:is(.card, .glass, .metric-card, .tool-card, .closing-cta) :is(p, li, dt, dd, small, .text-xs, .text-sm, [class*="text-[10px]"], [class*="text-[11px]"]) {
+  color: var(--text-body) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+#experience .experience-tab { --experience-accent: 124 92 255 !important; }
+
+.text-accent,
+[class*="text-cyan-"],
+[class*="text-violet-"],
+[class*="text-amber-"] {
+  color: var(--purple) !important;
+}
+
+#campaign-results .bg-gradient-to-r {
+  background-image: linear-gradient(90deg, var(--purple), #a790ff) !important;
+}
+
+#campaign-results [class*="bg-emerald-"] {
+  background-color: var(--purple) !important;
+}
+
+#campaign-results stop { stop-color: var(--purple) !important; }
+
+main > section p,
+footer p {
+  color: var(--text-body);
 }
 
 ::selection {
   color: #fff;
-  background: #d82f91;
+  background: var(--purple);
 }
 
 ::-webkit-scrollbar-track {
-  background: #17103f;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(#f04d9c, #7164dd);
-  border-color: #17103f;
+  background: var(--purple);
+  border-color: var(--bg);
 }
 
-@media (max-width: 768px) {
-  .glass,
-  .glass-strong,
-  .card,
-  #experience .experience-tab {
-    -webkit-backdrop-filter: blur(12px) saturate(125%) !important;
-    backdrop-filter: blur(12px) saturate(125%) !important;
-    box-shadow:
-      inset 1px 1px 0 rgb(255 255 255 / 0.28),
-      7px 10px 22px rgb(5 3 28 / 0.48) !important;
+@media (max-width: 767px) {
+  main > section:first-child .max-w-7xl > .grid {
+    min-width: 0 !important;
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    box-sizing: border-box;
   }
 
-  .card:hover,
-  .glass:hover {
-    transform: none !important;
+  main > section:first-child .max-w-7xl > .grid > div:first-child,
+  .hero-tagline,
+  .hero-summary {
+    display: block;
+    min-width: 0 !important;
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    box-sizing: border-box;
+  }
+
+  .hero-tagline,
+  .hero-summary {
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  main > section {
+    padding-block: 60px !important;
+  }
+
+  main > section:first-child {
+    padding-top: 112px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .closing-cta {
+    padding: 48px 0 56px !important;
+  }
+
+  .metric-card {
+    min-height: 158px;
+    padding: 16px !important;
+  }
+
+  .metric-card > p:nth-child(2) {
+    font-size: clamp(1.65rem, 8vw, 2.25rem) !important;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  main > section {
+    padding-block: 80px !important;
   }
 }
 

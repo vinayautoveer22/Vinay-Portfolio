@@ -19,15 +19,15 @@ function costContext(campaign) {
 
 function MetricCard({ label, value, detail, icon: Icon, accent }) {
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.035] p-4 sm:p-5">
+    <div className="metric-card rounded-2xl border border-white/[0.08] bg-white/[0.035] p-5 sm:p-6">
       <div className="flex items-center justify-between gap-3">
         <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-3">{label}</span>
         <span className={`flex h-8 w-8 items-center justify-center rounded-xl ${accent}`}>
           <Icon size={15} />
         </span>
       </div>
-      <p className="mt-4 text-2xl font-bold tabular-nums text-ink sm:text-[1.7rem]">{value}</p>
-      <p className="mt-1 text-xs text-ink-3">{detail}</p>
+      <p className="mt-5 text-[2.35rem] font-bold tabular-nums text-ink sm:text-[2.7rem]">{value}</p>
+      <p className="mt-2 text-sm text-ink-3">{detail}</p>
     </div>
   )
 }
@@ -176,7 +176,12 @@ export default function CampaignPerformance() {
             </div>
           </div>
 
-          <div className="mt-5 grid gap-4 lg:grid-cols-[1.4fr_0.8fr]">
+          <details className="campaign-details mt-5 rounded-2xl border border-white/[0.08] bg-[#101216]/55">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 text-base font-semibold text-ink marker:hidden">
+              <span>View campaign charts and click breakdown</span>
+              <ChevronDown size={20} aria-hidden="true" className="shrink-0 text-ink-2 transition-transform group-open:rotate-180" />
+            </summary>
+            <div className="grid gap-4 border-t border-line p-4 sm:p-5 lg:grid-cols-[1.4fr_0.8fr]">
             <div className="rounded-2xl border border-white/[0.08] bg-[#101216]/75 p-5 sm:p-6">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -253,7 +258,8 @@ export default function CampaignPerformance() {
                 <p className="pt-1 text-[10px] leading-4 text-ink-3">Other clicks = all clicks minus link clicks, from the supplied report.</p>
               </div>
             </div>
-          </div>
+            </div>
+          </details>
 
           <details className="group mt-5 rounded-2xl border border-white/[0.08] bg-[#101216]/55">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 text-sm font-semibold text-ink marker:hidden">
