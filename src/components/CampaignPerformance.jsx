@@ -26,7 +26,7 @@ function MetricCard({ label, value, detail, icon: Icon, accent }) {
           <Icon size={15} />
         </span>
       </div>
-      <p className="mt-5 text-[2.35rem] font-bold tabular-nums text-ink sm:text-[2.7rem]">{value}</p>
+      <p className="metric-card-value mt-5 min-w-0 whitespace-nowrap text-[2.35rem] font-bold tabular-nums text-ink sm:text-[2.7rem]">{value}</p>
       <p className="mt-2 text-sm text-ink-3">{detail}</p>
     </div>
   )
@@ -167,7 +167,7 @@ export default function CampaignPerformance() {
               <span className="chip !px-2.5 !py-1 text-[10px]">Reported snapshot</span>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+            <div className="campaign-metrics-grid grid grid-cols-2 gap-3 lg:grid-cols-4">
               <MetricCard label={selected.resultType} value={numberFormat.format(selected.results)} detail="Reported results" icon={Target} accent="bg-brand-400/10 text-brand-300" />
               <MetricCard label="Reach" value={numberFormat.format(selected.reach)} detail={`Frequency ${selected.frequency.toFixed(2)}`} icon={Activity} accent="bg-cyan-400/10 text-cyan-200" />
               <MetricCard label="Impressions" value={numberFormat.format(selected.impressions)} detail={`${numberFormat.format(selected.linkClicks)} link clicks`} icon={BarChart3} accent="bg-violet-400/10 text-violet-200" />

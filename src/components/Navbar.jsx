@@ -83,7 +83,7 @@ export default function Navbar() {
     .join('')
 
   return (
-    <header className="fixed top-3 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] lg:w-max max-w-[calc(100%-2.5rem)]">
+    <header className="site-navbar fixed top-3 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] lg:w-max max-w-[calc(100%-2.5rem)]">
       <div
         className={`w-full rounded-full border transition-all duration-300 backdrop-blur-2xl backdrop-saturate-150 ${
           scrolled || isOpen
@@ -91,9 +91,9 @@ export default function Navbar() {
             : 'bg-white/35 border-white/60'
         }`}
       >
-        <div className="h-[60px] pl-3 pr-2 sm:pl-4 flex items-center justify-between gap-4">
+        <div className="site-navbar-inner h-[60px] pl-3 pr-2 sm:pl-4 flex items-center justify-between gap-4">
           {/* Brand */}
-          <a href="#" className="flex items-center gap-2.5 shrink-0">
+          <a href="#" className="site-navbar-brand flex items-center gap-2.5 shrink-0">
             <span className="w-9 h-9 rounded-full brand-mark flex items-center justify-center text-sm font-bold font-display">
               {initials}
             </span>
@@ -142,7 +142,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isOpen}
-            className="lg:hidden arrow-btn w-11 h-11"
+            className="site-navbar-toggle lg:hidden arrow-btn w-11 h-11"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -166,7 +166,7 @@ export default function Navbar() {
               </a>
             ))}
           </nav>
-          <div className="grid grid-cols-2 gap-3 pt-3 mt-2 border-t border-line">
+          <div className="site-navbar-actions grid grid-cols-2 gap-3 pt-3 mt-2 border-t border-line">
             <a
               href={whatsappUrl}
               target="_blank"

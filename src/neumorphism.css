@@ -494,8 +494,143 @@ footer p {
   }
 
   .metric-card > p:nth-child(2) {
-    font-size: clamp(1.65rem, 8vw, 2.25rem) !important;
-    overflow-wrap: anywhere;
+    font-size: clamp(1.1rem, 6vw, 1.55rem) !important;
+    line-height: 1.2 !important;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
+    letter-spacing: -0.04em;
+  }
+}
+
+/* Compact layouts for narrow phones and watch-sized viewports. */
+@media (max-width: 360px) {
+  .site-navbar {
+    width: calc(100vw - 12px) !important;
+    max-width: calc(100vw - 12px) !important;
+  }
+
+  .site-navbar > div {
+    min-height: 0;
+  }
+
+  .site-navbar-inner {
+    height: 52px !important;
+    gap: 8px !important;
+    padding-inline: 8px !important;
+  }
+
+  .site-navbar-brand {
+    min-width: 0;
+    gap: 7px !important;
+  }
+
+  .site-navbar-brand > .brand-mark {
+    width: 30px !important;
+    height: 30px !important;
+    flex: 0 0 30px;
+  }
+
+  .site-navbar-brand > span:last-child > span:first-child {
+    font-size: 12px !important;
+  }
+
+  .site-navbar-toggle {
+    width: 40px !important;
+    height: 40px !important;
+    flex: 0 0 40px;
+  }
+
+  .site-navbar-actions {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .site-navbar nav > a {
+    padding: 9px 12px !important;
+    font-size: 14px !important;
+  }
+
+  main > section:first-child .max-w-7xl > .grid,
+  main > section:first-child .max-w-7xl > .grid > div:first-child,
+  .hero-tagline,
+  .hero-summary {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  main > section {
+    padding-block: 40px !important;
+  }
+
+  main > section:first-child {
+    padding-top: 88px !important;
+    padding-bottom: 40px !important;
+  }
+
+  main > section:first-child h1 {
+    font-size: clamp(1.75rem, 9vw, 2rem) !important;
+  }
+
+  main > section:first-child .grid {
+    row-gap: 28px !important;
+  }
+
+  .hero-character-stage {
+    max-width: min(100%, 190px) !important;
+  }
+
+  .hero-character-stage .float-slow {
+    display: none !important;
+  }
+
+  .campaign-metrics-grid,
+  #about .grid.grid-cols-3,
+  #skills .grid.grid-cols-2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .metric-card {
+    min-height: 0 !important;
+    padding: 14px !important;
+  }
+
+  .metric-card-value,
+  .metric-card > p:nth-child(2) {
+    margin-top: 12px !important;
+    font-size: clamp(1rem, 9vw, 1.25rem) !important;
+  }
+
+  #freelance .grid.grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .whatsapp-float {
+    right: max(8px, env(safe-area-inset-right)) !important;
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    padding: 4px !important;
+  }
+
+  .whatsapp-float > span:first-child {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .arrow-btn.fixed {
+    bottom: max(60px, calc(env(safe-area-inset-bottom) + 48px)) !important;
+    left: 8px !important;
+    right: auto !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+@media (max-width: 280px) {
+  main > section:first-child dl {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .site-navbar-brand > span:last-child > span:first-child {
+    font-size: 11px !important;
   }
 }
 
