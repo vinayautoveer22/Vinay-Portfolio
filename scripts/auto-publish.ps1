@@ -25,9 +25,23 @@ while ($true) {
 
     # These are local environment/configuration folders and must never be published.
     $relevantLines = @($statusLines | Where-Object {
-        $_ -notmatch '^\?\? \.agents/' -and $_ -notmatch '^\?\? \.netlify/'
+        $_ -notmatch '^\?\? \.agents([/\\]|$)' -and $_ -notmatch '^\?\? \.netlify([/\\]|$)'
     })
-    $signature = $relevantLines -join "`n"
+
+    # Git status alone does not change when an already-dirty file is saved again.
+    # Include timestamps and sizes so every later save resets the quiet timer.
+    $candidatePaths = @(& git diff --name-only HEAD)
+    $candidatePaths += @(& git ls-files --others --exclude-standard -- src public index.html vite.config.js netlify.toml package.json package-lock.json)
+    $fileState = @($candidatePaths | Sort-Object -Unique | ForEach-Object {
+        $candidate = Join-Path $repoRoot $_
+        if (Test-Path -LiteralPath $candidate -PathType Leaf) {
+            $file = Get-Item -LiteralPath $candidate
+            "$($_)|$($file.Length)|$($file.LastWriteTimeUtc.Ticks)"
+        } else {
+            "$($_)|deleted"
+        }
+    })
+    $signature = ($relevantLines -join "`n") + "`n" + ($fileState -join "`n")
 
     if ($signature -ne $lastSignature) {
         $lastSignature = $signature
