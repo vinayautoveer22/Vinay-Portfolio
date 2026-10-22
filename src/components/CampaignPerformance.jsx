@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { BarChart3, ChevronDown, MoreHorizontal, MousePointerClick, Target } from 'lucide-react'
+import { Activity, BarChart3, ChevronDown, MoreHorizontal, MousePointerClick, Target } from 'lucide-react'
 import SectionHeader from './SectionHeader'
 import { portfolioData } from '../data/portfolioData'
 
