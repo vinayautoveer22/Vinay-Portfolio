@@ -3,11 +3,11 @@ html.show-portfolio-intro body {
   overflow: hidden;
 }
 
-.portfolio-intro[hidden] {
+.first-visit-loader[hidden] {
   display: none !important;
 }
 
-.portfolio-intro {
+.first-visit-loader {
   position: fixed;
   inset: 0;
   z-index: 99999;
@@ -19,7 +19,7 @@ html.show-portfolio-intro body {
   transition: opacity 400ms ease;
 }
 
-.portfolio-intro.is-hidden {
+.first-visit-loader.is-hidden {
   opacity: 0;
   pointer-events: none;
 }
@@ -138,7 +138,7 @@ html.show-portfolio-intro body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .portfolio-intro,
+  .first-visit-loader,
   .portfolio-intro-character,
   .portfolio-intro-character img,
   .portfolio-intro-progress-fill {
