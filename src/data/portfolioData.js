@@ -413,7 +413,7 @@ summary:
     { name: 'Google Flow', icon: './icons/googleflow.webp', category: 'AI Video' },
     { name: 'Interakt', icon: './icons/Interakt.png', category: 'Messaging (Learning)' },
     { name: 'Meta Reach', icon: './icons/metareach.jpg', category: 'Meta Tool' },
-    { name: 'ElevenLabs', icon: null, category: 'Voice-over' },
+    { name: 'ElevenLabs', icon: './icons/elevenlabs.svg', category: 'Voice-over' },
   ],
 
   // ----------------------------------------------------------------------------
