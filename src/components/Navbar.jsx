@@ -99,7 +99,7 @@ export default function Navbar() {
             </span>
             <span className="flex flex-col leading-tight">
               <span className="text-[15px] font-bold text-ink font-display whitespace-nowrap">{portfolioData.name}</span>
-              <span className="text-[11px] font-medium text-ink-3 whitespace-nowrap hidden sm:block">Performance Marketer</span>
+              <span className="text-[11px] font-medium text-ink-3 whitespace-nowrap hidden sm:block">Digital Marketer</span>
             </span>
           </a>
 
