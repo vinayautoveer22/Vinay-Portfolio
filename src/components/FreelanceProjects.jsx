@@ -153,7 +153,7 @@ function FreelanceProjectCard({ project, index, whatsappUrl }) {
         <Lightbox
           items={images.map((image) => ({ type: 'image', src: image.src, thumb: image.src }))}
           index={activeImage}
-          label={`${project.name} Â· ${project.collection || 'Freelance Project'}`}
+          label={`${project.name} · ${project.collection || 'Freelance Project'}`}
           onIndex={setActiveImage}
           onClose={() => setIsGalleryOpen(false)}
         />

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Activity, BarChart3, ChevronDown, MoreHorizontal, MousePointerClick, Target } from 'lucide-react'
+import { BarChart3, ChevronDown, MoreHorizontal, MousePointerClick, Target } from 'lucide-react'
 import SectionHeader from './SectionHeader'
 import { portfolioData } from '../data/portfolioData'
 
@@ -109,12 +109,11 @@ export default function CampaignPerformance() {
         <div className="campaign-dashboard glass ring-gradient mt-12 min-w-0 overflow-visible rounded-[30px] p-4 sm:p-6 lg:p-8">
           <div className="flex flex-col gap-5 border-b border-line pb-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-300/15 bg-cyan-300/10 text-cyan-200">
-                <Activity size={20} />
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white p-1.5">
+                <img src="./icons/metaads.webp" alt="" aria-hidden="true" className="h-full w-full rounded-full object-contain" />
               </span>
               <div>
-                <p className="text-sm font-semibold text-ink">Meta Ads campaign snapshots</p>
-                <p className="mt-1 text-xs text-ink-3">{campaigns.length} campaigns Â· account results as reported</p>
+                <p className="text-sm font-semibold text-ink">Meta Ads campaign results</p>
               </div>
             </div>
             <div ref={campaignMenuRef} className="relative z-20 flex flex-col gap-2 sm:min-w-[280px]">

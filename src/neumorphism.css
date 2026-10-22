@@ -40,8 +40,13 @@ body {
 }
 
 .site-navbar-brand > span:last-child {
-  gap: 3px;
-  line-height: 1.2;
+  gap: 4px;
+  line-height: 1.25;
+}
+
+.site-navbar-brand > span:last-child > span:first-child {
+  letter-spacing: 0.01em;
+  line-height: 1.25;
 }
 
 .site-navbar-brand > span:last-child > span:last-child {
@@ -279,10 +284,7 @@ nav[aria-label] {
 
 .eyebrow { font-size: 14px !important; }
 
-small,
-.text-xs,
-[class*="text-[10px]"],
-[class*="text-[11px]"] {
+small {
   color: var(--text-body) !important;
   font-size: 14px !important;
   line-height: 1.45 !important;
@@ -452,7 +454,7 @@ select:focus-visible {
 }
 
 /* Card copy and secondary text stay readable at phone sizes. */
-:is(.card, .glass, .metric-card, .tool-card, .closing-cta) :is(p, li, dt, dd, small, .text-xs, .text-sm, [class*="text-[10px]"], [class*="text-[11px]"]) {
+:is(.card, .glass, .metric-card, .tool-card, .closing-cta) :is(p, li) {
   color: var(--text-body) !important;
   font-size: 14px !important;
   line-height: 1.6 !important;

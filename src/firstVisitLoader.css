@@ -106,7 +106,7 @@ html.show-portfolio-intro body {
   box-shadow: 0 0 18px rgb(124 92 255 / 25%);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(calc(0deg - var(--angle)));
   animation: portfolio-intro-counter-rotate 20s linear infinite;
 }
 
@@ -212,7 +212,8 @@ html.show-portfolio-intro body {
 }
 
 @keyframes portfolio-intro-counter-rotate {
-  to { rotate: -1turn; }
+  from { transform: translate(-50%, -50%) rotate(calc(0deg - var(--angle))); }
+  to { transform: translate(-50%, -50%) rotate(calc(0deg - var(--angle) - 1turn)); }
 }
 
 @keyframes portfolio-intro-progress {
