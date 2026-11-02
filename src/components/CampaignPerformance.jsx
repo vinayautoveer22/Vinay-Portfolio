@@ -34,6 +34,7 @@ function MetricCard({ label, value, detail, icon: Icon, accent }) {
 
 export default function CampaignPerformance() {
   const campaigns = portfolioData.campaignSnapshots || []
+  const eulerReport = portfolioData.eulerLeadCampaignReport
   const [selectedId, setSelectedId] = useState('nissan-tekton-lead')
   const [campaignMenuOpen, setCampaignMenuOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
@@ -94,6 +95,13 @@ export default function CampaignPerformance() {
   const otherClicks = Math.max(0, selected.allClicks - selected.linkClicks)
   const linkShare = selected.allClicks ? selected.linkClicks / selected.allClicks : 0
   const maxLeads = Math.max(...leadCampaigns.map((campaign) => campaign.results), 1)
+  const eulerTotals = eulerReport?.ads.reduce(
+    (totals, ad) => ({
+      amountSpent: totals.amountSpent + ad.amountSpent,
+      genuineLeads: totals.genuineLeads + ad.genuineLeads,
+    }),
+    { amountSpent: 0, genuineLeads: 0 }
+  )
 
   return (
     <section id="campaign-results" ref={sectionRef} className="relative py-24 lg:py-32">
@@ -105,6 +113,52 @@ export default function CampaignPerformance() {
           highlight="the campaigns."
           description="Selected Meta Ads results across automotive, hospitality and hiring campaigns."
         />
+
+        {eulerReport && eulerTotals && (
+          <div className="campaign-dashboard glass ring-gradient mt-12 min-w-0 overflow-hidden rounded-[30px] p-5 sm:p-7 lg:p-9">
+            <div className="border-b border-line pb-5">
+              <span className="chip chip-brand uppercase tracking-[0.14em] text-[10px]">Meta Lead Campaign Report</span>
+              <h3 className="mt-3 text-xl font-bold text-ink sm:text-2xl">{eulerReport.brand}</h3>
+            </div>
+
+            <div className="mt-6 grid gap-4 lg:grid-cols-2">
+              {eulerReport.ads.map((ad) => (
+                <div key={ad.name} className="rounded-2xl border border-white/[0.08] bg-[#101216]/55 p-5 sm:p-6">
+                  <h4 className="text-base font-semibold text-ink">{ad.name}</h4>
+                  <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-3">
+                    <div><dt className="text-xs text-ink-3">Amount spent</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{moneyFormat.format(ad.amountSpent)}</dd></div>
+                    <div><dt className="text-xs text-ink-3">Genuine leads</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{numberFormat.format(ad.genuineLeads)}</dd></div>
+                    <div><dt className="text-xs text-ink-3">Cost per genuine lead</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{moneyFormat.format(ad.costPerGenuineLead)}</dd></div>
+                    <div><dt className="text-xs text-ink-3">Messaging conversations</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{numberFormat.format(ad.messagingConversations)}</dd></div>
+                    <div><dt className="text-xs text-ink-3">Link clicks</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{numberFormat.format(ad.linkClicks)}</dd></div>
+                    <div><dt className="text-xs text-ink-3">All clicks</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{numberFormat.format(ad.allClicks)}</dd></div>
+                  </dl>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              <MetricCard label="Total spend" value={moneyFormat.format(eulerTotals.amountSpent)} detail="Image and video ads" icon={Activity} accent="bg-cyan-400/10 text-cyan-200" />
+              <MetricCard label="Total genuine leads" value={numberFormat.format(eulerTotals.genuineLeads)} detail="Combined ad results" icon={Target} accent="bg-brand-400/10 text-brand-300" />
+              <MetricCard label="Overall cost per lead" value={moneyFormat.format(eulerTotals.amountSpent / eulerTotals.genuineLeads)} detail="Total spend ÷ genuine leads" icon={MousePointerClick} accent="bg-amber-400/10 text-amber-200" />
+            </div>
+
+            <div className="mt-5 rounded-2xl border border-white/[0.08] bg-[#101216]/55 p-5 sm:p-6">
+              <div className="mb-4">
+                <h4 className="text-base font-semibold text-ink">Campaign Dashboard Snapshot</h4>
+                <p className="mt-1 text-xs text-ink-3">Additional reported campaign results</p>
+              </div>
+              <dl className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+                <div><dt className="text-xs text-ink-3">Leads</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{numberFormat.format(eulerReport.dashboardSnapshot.leads)}</dd></div>
+                <div><dt className="text-xs text-ink-3">Reach</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{numberFormat.format(eulerReport.dashboardSnapshot.reach)}</dd></div>
+                <div><dt className="text-xs text-ink-3">Impressions</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{numberFormat.format(eulerReport.dashboardSnapshot.impressions)}</dd></div>
+                <div><dt className="text-xs text-ink-3">Link clicks</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{numberFormat.format(eulerReport.dashboardSnapshot.linkClicks)}</dd></div>
+                <div><dt className="text-xs text-ink-3">Cost per lead</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{moneyFormat.format(eulerReport.dashboardSnapshot.costPerLead)}</dd></div>
+                <div><dt className="text-xs text-ink-3">Frequency</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{eulerReport.dashboardSnapshot.frequency.toFixed(2)}</dd></div>
+              </dl>
+            </div>
+          </div>
+        )}
 
         <div className="campaign-dashboard glass ring-gradient mt-12 min-w-0 overflow-visible rounded-[30px] p-4 sm:p-6 lg:p-8">
           <div className="flex flex-col gap-5 border-b border-line pb-6 sm:flex-row sm:items-center sm:justify-between">
@@ -300,4 +354,3 @@ export default function CampaignPerformance() {
     </section>
   )
 }
-

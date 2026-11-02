@@ -234,6 +234,21 @@ summary:
   // Each row keeps the reporting figures from its own Ads Manager snapshot;
   // avoid summing campaigns because their date ranges and objectives differ.
   // ----------------------------------------------------------------------------
+  eulerLeadCampaignReport: {
+    brand: 'Euler Smart Solution',
+    ads: [
+      { name: 'Image Ad', amountSpent: 164, genuineLeads: 17, costPerGenuineLead: 9.65, messagingConversations: 11, linkClicks: 58, allClicks: 82 },
+      { name: 'Video Ad', amountSpent: 215, genuineLeads: 34, costPerGenuineLead: 6.32, messagingConversations: 16, linkClicks: 69, allClicks: 127 },
+    ],
+    dashboardSnapshot: {
+      leads: 12,
+      reach: 24527,
+      impressions: 41089,
+      linkClicks: 430,
+      costPerLead: 109.58,
+      frequency: 1.67,
+    },
+  },
   campaignSnapshots: [
     { id: 'tafe-copy', name: 'Tafe | Campaign – Copy', status: 'Active', objective: 'Lead generation', resultType: 'Leads', results: 12, reach: 24527, frequency: 1.67, costPerResult: 109.58, impressions: 41089, cpm: 32.04, linkClicks: 430, cpcLink: 3.06, ctrLink: 1.05, allClicks: 526, ctrAll: 1.28, cpcAll: 2.50 },
     { id: 'tafe-campaign', name: 'Tafe | Campaign', status: 'Active', objective: 'Lead generation', resultType: 'Leads', results: 28, reach: 31483, frequency: 1.64, costPerResult: 52.46, impressions: 51677, cpm: 28.45, linkClicks: 479, cpcLink: 3.07, ctrLink: 0.93, allClicks: 631, ctrAll: 1.22, cpcAll: 2.33 },
