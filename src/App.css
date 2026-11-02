@@ -4226,6 +4226,10 @@ html[data-motion-ready='true'] .motion-reveal[data-motion-direction='bottom']:no
   backface-visibility: hidden;
 }
 
+.eyebrow.motion-reveal {
+  display: inline-block;
+}
+
 .card:hover {
   transform: translateY(-3px) perspective(1000px) rotateX(0.65deg) rotateY(-0.45deg);
 }
@@ -4392,4 +4396,3 @@ html[data-motion-ready='true'] .motion-reveal[data-motion-direction='bottom']:no
     transition: none;
   }
 }
-
