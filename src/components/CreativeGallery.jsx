@@ -41,7 +41,9 @@ const imagesFor = (category) => {
     return {
       type: 'image',
       src: `./ai-images/${category.folder}/${file}`,
-      thumb: `./ai-images/${category.folder}/thumbs/${file}`,
+      thumb: category.thumbnails === false
+        ? `./ai-images/${category.folder}/${file}`
+        : `./ai-images/${category.folder}/thumbs/${file}`,
     }
   })
 }

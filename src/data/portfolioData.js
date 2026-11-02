@@ -485,6 +485,18 @@ summary:
       videos: [],
     },
     {
+      id: 'euler-smart-solution',
+      label: 'Euler Smart Solution',
+      brand: 'Euler Motors · Smart Solution',
+      folder: 'euler-smart-solution',
+      images: 22,
+      files: Array.from({ length: 23 }, (_, index) => String(index + 1))
+        .filter((number) => number !== '16')
+        .map((number) => `${number}.png`),
+      thumbnails: false,
+      videos: [],
+    },
+    {
       id: 'two-wheeler',
       label: '2 Wheeler',
       brand: 'Bajaj · AutoVeer',
