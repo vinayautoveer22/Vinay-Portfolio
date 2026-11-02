@@ -101,6 +101,15 @@ summary:
   // ----------------------------------------------------------------------------
   projects: [
     {
+      id: 'euler-smart-solution',
+      name: 'Euler Smart Solution',
+      category: 'ELECTRIC COMMERCIAL VEHICLES',
+      description: 'Current digital marketing support for an Euler Motors authorised partner, including social content, campaign creatives, and lead generation.',
+      services: ['Social Media Marketing', 'Campaign Creatives', 'Lead Generation'],
+      image: './projects/euler-smart-solution-instagram.png',
+      colorTheme: 'cyan',
+    },
+    {
       id: 'autoveer-2-wheeler',
       name: 'AutoVeer 2 Wheeler',
       category: 'AUTOMOTIVE CAMPAIGN',
