@@ -43,7 +43,7 @@ export default function Hero() {
                 <span>View My Work</span>
                 <ArrowRight size={16} />
               </a>
-              <a href="./Vinay-Kumar-CV.pdf" download className="btn btn-glass px-7 py-4">
+              <a href="./Vinay%20Kumar%20%20CV.pdf" download className="btn btn-glass px-7 py-4">
                 <Download size={16} />
                 <span>Download CV</span>
               </a>
