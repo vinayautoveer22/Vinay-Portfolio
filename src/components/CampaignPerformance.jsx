@@ -94,13 +94,6 @@ export default function CampaignPerformance() {
   const otherClicks = Math.max(0, selected.allClicks - selected.linkClicks)
   const linkShare = selected.allClicks ? selected.linkClicks / selected.allClicks : 0
   const maxLeads = Math.max(...leadCampaigns.map((campaign) => campaign.results), 1)
-  const eulerTotals = selected.leadReport?.ads.reduce(
-    (totals, ad) => ({
-      amountSpent: totals.amountSpent + ad.amountSpent,
-      genuineLeads: totals.genuineLeads + ad.genuineLeads,
-    }),
-    { amountSpent: 0, genuineLeads: 0 }
-  )
 
   return (
     <section id="campaign-results" ref={sectionRef} className="relative py-24 lg:py-32">
@@ -173,7 +166,7 @@ export default function CampaignPerformance() {
               <span className="chip !px-2.5 !py-1 text-[10px]">Reported snapshot</span>
             </div>
 
-            {selected.leadReport && eulerTotals ? (
+            {selected.leadReport ? (
               <>
                 <div className="mb-4">
                   <span className="chip chip-brand uppercase tracking-[0.14em] text-[10px]">Euler Smart Solution · Meta Lead Campaign Report</span>
@@ -192,25 +185,6 @@ export default function CampaignPerformance() {
                       </dl>
                     </div>
                   ))}
-                </div>
-                <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                  <MetricCard label="Total spend" value={moneyFormat.format(eulerTotals.amountSpent)} detail="Image and video ads" icon={Activity} accent="bg-cyan-400/10 text-cyan-200" />
-                  <MetricCard label="Total genuine leads" value={numberFormat.format(eulerTotals.genuineLeads)} detail="Combined ad results" icon={Target} accent="bg-brand-400/10 text-brand-300" />
-                  <MetricCard label="Overall cost per lead" value={moneyFormat.format(eulerTotals.amountSpent / eulerTotals.genuineLeads)} detail="Total spend ÷ genuine leads" icon={MousePointerClick} accent="bg-amber-400/10 text-amber-200" />
-                </div>
-                <div className="mt-5 rounded-2xl border border-white/[0.08] bg-[#101216]/55 p-5 sm:p-6">
-                  <div className="mb-4">
-                    <h4 className="text-base font-semibold text-ink">Campaign Dashboard Snapshot</h4>
-                    <p className="mt-1 text-xs text-ink-3">Additional reported campaign results</p>
-                  </div>
-                  <dl className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-                    <div><dt className="text-xs text-ink-3">Leads</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{numberFormat.format(selected.leadReport.dashboardSnapshot.leads)}</dd></div>
-                    <div><dt className="text-xs text-ink-3">Reach</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{numberFormat.format(selected.leadReport.dashboardSnapshot.reach)}</dd></div>
-                    <div><dt className="text-xs text-ink-3">Impressions</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{numberFormat.format(selected.leadReport.dashboardSnapshot.impressions)}</dd></div>
-                    <div><dt className="text-xs text-ink-3">Link clicks</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{numberFormat.format(selected.leadReport.dashboardSnapshot.linkClicks)}</dd></div>
-                    <div><dt className="text-xs text-ink-3">Cost per lead</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{moneyFormat.format(selected.leadReport.dashboardSnapshot.costPerLead)}</dd></div>
-                    <div><dt className="text-xs text-ink-3">Frequency</dt><dd className="mt-1 font-semibold tabular-nums text-ink">{selected.leadReport.dashboardSnapshot.frequency.toFixed(2)}</dd></div>
-                  </dl>
                 </div>
               </>
             ) : (
@@ -331,7 +305,7 @@ export default function CampaignPerformance() {
                       <td className="px-5 py-3.5 font-medium text-ink">{campaign.name}</td>
                       <td className="px-4 py-3.5 text-ink-3">Snapshot</td>
                       <td className="px-4 py-3.5 text-right tabular-nums text-ink">{numberFormat.format(campaign.results)} <span className="text-ink-3">{campaign.resultType}</span></td>
-                      <td className="px-4 py-3.5 text-right tabular-nums text-ink-2">{numberFormat.format(campaign.reach)}</td>
+                      <td className="px-4 py-3.5 text-right tabular-nums text-ink-2">{campaign.reach == null ? '—' : numberFormat.format(campaign.reach)}</td>
                       <td className="px-4 py-3.5 text-right tabular-nums text-ink-2">{numberFormat.format(campaign.linkClicks)}</td>
                       <td className="px-5 py-3.5 text-right tabular-nums text-ink">{moneyFormat.format(campaign.costPerResult)}</td>
                     </tr>
@@ -342,7 +316,7 @@ export default function CampaignPerformance() {
           </details>
 
           <p className="mt-5 text-[11px] leading-5 text-ink-3">
-            Campaign-level figures transcribed from the supplied Ads Manager screenshots. Reporting periods vary by campaign, so figures are shown individually and are not added together.
+            Campaign-level figures are transcribed from the supplied reports. Reporting periods vary by campaign; campaign totals are not added across campaigns.
           </p>
         </div>
       </div>
