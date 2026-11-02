@@ -1,4 +1,5 @@
-import { ArrowRight, Download, TrendingUp, Sparkles, Target } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { ArrowRight, Download, TrendingUp, Sparkles, Target, X, ExternalLink } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
 import usePointerParallax from './usePointerParallax'
 import { portfolioData } from '../data/portfolioData'
@@ -9,10 +10,29 @@ import { portfolioData } from '../data/portfolioData'
  */
 export default function Hero() {
   const characterStageRef = usePointerParallax()
+  const [isCvPreviewOpen, setIsCvPreviewOpen] = useState(false)
+  const cvUrl = './Vinay%20Kumar%20%20CV.pdf'
   const whatsappUrl = `https://wa.me/${portfolioData.contact.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(portfolioData.contact.whatsappMessage)}`
 
+  useEffect(() => {
+    if (!isCvPreviewOpen) return undefined
+
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setIsCvPreviewOpen(false)
+    }
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', closeOnEscape)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [isCvPreviewOpen])
+
   return (
-    <section className="relative overflow-hidden pt-36 pb-24 lg:pt-44 lg:pb-32">
+    <>
+      <section className="relative overflow-hidden pt-36 pb-24 lg:pt-44 lg:pb-32">
 
       
 
@@ -43,10 +63,10 @@ export default function Hero() {
                 <span>View My Work</span>
                 <ArrowRight size={16} />
               </a>
-              <a href="./Vinay%20Kumar%20%20CV.pdf" download className="btn btn-glass px-7 py-4">
+              <button type="button" onClick={() => setIsCvPreviewOpen(true)} className="btn btn-glass px-7 py-4">
                 <Download size={16} />
-                <span>Download CV</span>
-              </a>
+                <span>Preview CV</span>
+              </button>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-glass px-7 py-4">
                 <WhatsAppIcon size={18} color="#25D366" />
                 <span>Chat on WhatsApp</span>
@@ -107,6 +127,57 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+      {isCvPreviewOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex flex-col bg-[#08090b]/80 p-3 backdrop-blur-md sm:p-6"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) setIsCvPreviewOpen(false)
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="cv-preview-title"
+        >
+          <div className="mx-auto flex h-full w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-white/15 bg-[#11111b] shadow-2xl">
+            <div className="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-3 text-white sm:px-6">
+              <h2 id="cv-preview-title" className="font-semibold">CV Preview</h2>
+              <div className="flex items-center gap-2">
+                <a
+                  href={cvUrl}
+                  download
+                  className="btn btn-primary px-4 py-2 text-sm"
+                >
+                  <Download size={16} />
+                  <span>Download CV</span>
+                </a>
+                <a
+                  href={cvUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="arrow-btn !border-white/20 !bg-white/10 !text-white hover:!bg-white/20"
+                  aria-label="Open CV in a new tab"
+                  title="Open in new tab"
+                >
+                  <ExternalLink size={18} />
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setIsCvPreviewOpen(false)}
+                  className="arrow-btn !border-white/20 !bg-white/10 !text-white hover:!bg-white/20"
+                  aria-label="Close CV preview"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+            <iframe
+              src={`${cvUrl}#view=FitH`}
+              title="Vinay Kumar CV preview"
+              className="min-h-0 flex-1 bg-white"
+            />
+          </div>
+        </div>
+      )}
+    </>
   )
 }
