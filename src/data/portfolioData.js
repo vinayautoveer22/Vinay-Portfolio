@@ -234,22 +234,40 @@ summary:
   // Each row keeps the reporting figures from its own Ads Manager snapshot;
   // avoid summing campaigns because their date ranges and objectives differ.
   // ----------------------------------------------------------------------------
-  eulerLeadCampaignReport: {
-    brand: 'Euler Smart Solution',
-    ads: [
-      { name: 'Image Ad', amountSpent: 164, genuineLeads: 17, costPerGenuineLead: 9.65, messagingConversations: 11, linkClicks: 58, allClicks: 82 },
-      { name: 'Video Ad', amountSpent: 215, genuineLeads: 34, costPerGenuineLead: 6.32, messagingConversations: 16, linkClicks: 69, allClicks: 127 },
-    ],
-    dashboardSnapshot: {
-      leads: 12,
-      reach: 24527,
-      impressions: 41089,
-      linkClicks: 430,
-      costPerLead: 109.58,
-      frequency: 1.67,
-    },
-  },
   campaignSnapshots: [
+    {
+      id: 'euler-smart-solution',
+      name: 'Euler Smart Solution | Meta Lead Campaign Report',
+      status: 'Active',
+      objective: 'Lead generation',
+      resultType: 'Genuine leads',
+      results: 51,
+      reach: 24527,
+      frequency: 1.67,
+      costPerResult: 7.43,
+      impressions: 41089,
+      cpm: 0,
+      linkClicks: 127,
+      cpcLink: 0,
+      ctrLink: 0,
+      allClicks: 209,
+      ctrAll: 0,
+      cpcAll: 0,
+      leadReport: {
+        ads: [
+          { name: 'Image Ad', amountSpent: 164, genuineLeads: 17, costPerGenuineLead: 9.65, messagingConversations: 11, linkClicks: 58, allClicks: 82 },
+          { name: 'Video Ad', amountSpent: 215, genuineLeads: 34, costPerGenuineLead: 6.32, messagingConversations: 16, linkClicks: 69, allClicks: 127 },
+        ],
+        dashboardSnapshot: {
+          leads: 12,
+          reach: 24527,
+          impressions: 41089,
+          linkClicks: 430,
+          costPerLead: 109.58,
+          frequency: 1.67,
+        },
+      },
+    },
     { id: 'tafe-copy', name: 'Tafe | Campaign – Copy', status: 'Active', objective: 'Lead generation', resultType: 'Leads', results: 12, reach: 24527, frequency: 1.67, costPerResult: 109.58, impressions: 41089, cpm: 32.04, linkClicks: 430, cpcLink: 3.06, ctrLink: 1.05, allClicks: 526, ctrAll: 1.28, cpcAll: 2.50 },
     { id: 'tafe-campaign', name: 'Tafe | Campaign', status: 'Active', objective: 'Lead generation', resultType: 'Leads', results: 28, reach: 31483, frequency: 1.64, costPerResult: 52.46, impressions: 51677, cpm: 28.45, linkClicks: 479, cpcLink: 3.07, ctrLink: 0.93, allClicks: 631, ctrAll: 1.22, cpcAll: 2.33 },
     { id: 'ashok-parivartan', name: 'Ashok Leyland | Parivartan | Campaign', status: 'Active', objective: 'Lead generation', resultType: 'Leads', results: 93, reach: 27146, frequency: 2.50, costPerResult: 26.27, impressions: 67847, cpm: 36.03, linkClicks: 796, cpcLink: 3.07, ctrLink: 1.17, allClicks: 1083, ctrAll: 1.60, cpcAll: 2.26 },
