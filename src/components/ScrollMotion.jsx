@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const motionTargets = '.card, .media-tile, .campaign-step'
+const motionTargets = '.card, .media-tile, .campaign-step, .eyebrow, section h2'
 
 /** Adds a one-time reveal as content enters the viewport. */
 export default function ScrollMotion() {
@@ -8,6 +8,8 @@ export default function ScrollMotion() {
     if (!('IntersectionObserver' in window)) return undefined
 
     const targets = new WeakSet()
+    let targetIndex = 0
+    const directions = ['left', 'right', 'top', 'bottom']
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -22,6 +24,7 @@ export default function ScrollMotion() {
     const observeTargets = (root) => {
       if (root instanceof Element && root.matches(motionTargets) && !targets.has(root)) {
         targets.add(root)
+        root.dataset.motionDirection = directions[targetIndex++ % directions.length]
         root.classList.add('motion-reveal')
         observer.observe(root)
       }
@@ -29,6 +32,7 @@ export default function ScrollMotion() {
       root.querySelectorAll?.(motionTargets).forEach((element) => {
         if (targets.has(element)) return
         targets.add(element)
+        element.dataset.motionDirection = directions[targetIndex++ % directions.length]
         element.classList.add('motion-reveal')
         observer.observe(element)
       })
