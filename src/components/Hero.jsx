@@ -11,7 +11,7 @@ import { portfolioData } from '../data/portfolioData'
 export default function Hero() {
   const characterStageRef = usePointerParallax()
   const [isCvPreviewOpen, setIsCvPreviewOpen] = useState(false)
-  const cvUrl = './Vinay%20Kumar%20%20CV.pdf'
+  const cvUrl = './Vinay%20Kumar%20Resume.pdf'
   const whatsappUrl = `https://wa.me/${portfolioData.contact.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(portfolioData.contact.whatsappMessage)}`
 
   useEffect(() => {
