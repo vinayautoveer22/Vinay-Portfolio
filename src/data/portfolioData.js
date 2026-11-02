@@ -246,13 +246,8 @@ summary:
       frequency: 1.67,
       costPerResult: 7.43,
       impressions: 41089,
-      cpm: 0,
       linkClicks: 127,
-      cpcLink: 0,
-      ctrLink: 0,
       allClicks: 209,
-      ctrAll: 0,
-      cpcAll: 0,
       leadReport: {
         ads: [
           { name: 'Image Ad', amountSpent: 164, genuineLeads: 17, costPerGenuineLead: 9.65, messagingConversations: 11, linkClicks: 58, allClicks: 82 },
