@@ -28,7 +28,7 @@ export default function About() {
   ]
 
   const highlights = [
-    '2+ years of hands-on digital & performance marketing experience',
+    '2.5+ years of hands-on digital & performance marketing experience',
     'Specialized in automotive dealership campaigns (Nissan, Bajaj, Leyland)',
     'End-to-end multi-brand social media calendar planning & publishing',
     'AI-assisted content workflows using tools such as ChatGPT, Claude, Gemini, and video generators',
@@ -36,7 +36,7 @@ export default function About() {
   ]
 
   const numbers = [
-    { value: '2+', label: 'Years Experience' },
+    { value: '2.5+', label: 'Years Experience' },
     { value: '10+', label: 'Brands Managed' },
     { value: '100+', label: 'Creatives Made' },
   ]

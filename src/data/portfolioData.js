@@ -19,7 +19,7 @@ heroTitle: 'Digital Marketer',
 tagline: 'Performance Marketing · Meta Ads · Lead Generation · Social Media & AI-Powered Creatives',
 
 summary:
-  'Digital marketing professional focused on paid advertising, lead generation, social media execution, campaign monitoring, and creative content production. I also work across Google Ads, websites, and AI-assisted creative workflows, drawing on 2+ years of hands-on experience.',
+  'Digital marketing professional focused on paid advertising, lead generation, social media execution, campaign monitoring, and creative content production. I also work across Google Ads, websites, and AI-assisted creative workflows, drawing on 2.5+ years of hands-on experience.',
   
   // ----------------------------------------------------------------------------
   // Contact Details
@@ -36,8 +36,8 @@ summary:
   // Key Stats / Highlights (Used in Hero & About sections)
   // ----------------------------------------------------------------------------
   stats: [
-    { value: '2+', label: 'Years Experience', hint: 'Performance & Paid Media' },
-    { value: '15+', label: 'Brand Campaigns', hint: 'Automotive & Dealerships' },
+    { value: '2.5+', label: 'Years Experience', hint: 'Performance & Paid Media' },
+    { value: '20+', label: 'Brand Campaigns', hint: 'Automotive & Dealerships' },
     { value: '100+', label: 'AI Creatives & Reels', hint: 'High-Engagement Video' },
     { value: '6+', label: 'Dealership Brands', hint: 'Nissan, Bajaj, Leyland & more' },
   ],
