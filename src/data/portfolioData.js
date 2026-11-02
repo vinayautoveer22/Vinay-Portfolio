@@ -12,9 +12,9 @@ export const portfolioData = {
   // ----------------------------------------------------------------------------
   name: 'Vinay Kumar',
 
-title: 'Digital Marketing Specialist',
+title: 'Digital Marketer',
 
-heroTitle: 'Digital Marketing Specialist',
+heroTitle: 'Digital Marketer',
 
 tagline: 'Performance Marketing · Meta Ads · Lead Generation · Social Media & AI-Powered Creatives',
 
@@ -263,7 +263,7 @@ summary:
       company: 'Smart Solution Euler',
       logo: './company-logos/smart-solution-euler.png',
       companyWebsiteUrl: 'https://www.eulermotors.com/en/',
-      role: 'Digital Marketing Specialist',
+      role: 'Digital Marketer',
       period: 'October 2026 – Present',
       summary: 'Recently joined and currently supporting social media execution, Meta Ads lead generation, daily reporting, and coordination with the calling team.',
       colorTheme: 'ice-blue',

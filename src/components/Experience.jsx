@@ -18,7 +18,7 @@ export default function Experience() {
           eyebrow="Experience"
           title="Work experience &"
           highlight="proven execution."
-          description="Experience across performance marketing, content, and paid media, including my current Digital Marketing Specialist role."
+          description="Experience across performance marketing, content, and paid media, including my current Digital Marketer role."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start mt-16">
