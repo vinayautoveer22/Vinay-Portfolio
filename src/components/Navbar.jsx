@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'Freelance', href: '#freelance' },
   { label: 'Creatives', href: '#ai-creative' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Certificates', href: '#certificates' },
   { label: 'Skills', href: '#skills' },
 ]
 
@@ -32,6 +33,7 @@ export default function Navbar() {
       { id: 'freelance', href: '#freelance' },
       { id: 'ai-creative', href: '#ai-creative' },
       { id: 'experience', href: '#experience' },
+      { id: 'certificates', href: '#certificates' },
       { id: 'skills', href: '#skills' },
       { id: 'contact', href: '#contact' },
     ]
@@ -187,4 +189,3 @@ export default function Navbar() {
     </header>
   )
 }
-

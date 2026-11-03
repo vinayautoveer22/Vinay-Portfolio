@@ -8,6 +8,7 @@ import CampaignPerformance from './components/CampaignPerformance'
 import FreelanceProjects from './components/FreelanceProjects'
 import CreativeGallery from './components/CreativeGallery'
 import Experience from './components/Experience'
+import Certificates from './components/Certificates'
 import Skills from './components/Skills'
 import Contact from './components/Contact'
 import WhatsAppButton from './components/WhatsAppButton'
@@ -36,6 +37,7 @@ export default function App() {
           <FreelanceProjects />
           <CreativeGallery />
           <Experience />
+          <Certificates />
           <Skills />
           <CampaignProcess />
           <Contact />
@@ -48,4 +50,3 @@ export default function App() {
       </div>
   )
 }
-
