@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Award, ExternalLink } from 'lucide-react'
-import { X } from 'lucide-react'
+import { Award, Eye, X } from 'lucide-react'
 import SectionHeader from './SectionHeader'
 
 const certificates = [
@@ -101,7 +100,7 @@ export default function Certificates() {
                 className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700"
               >
                 View certificate
-                <ExternalLink size={15} />
+                <Eye size={15} />
               </button>
             </article>
           ))}
