@@ -60,9 +60,12 @@ export default function Certificates() {
                     className="w-full h-full object-contain"
                   />
                 ) : (
-                  <span className="icon-tile w-16 h-16 rounded-2xl">
-                    <FileText size={30} />
-                  </span>
+                  <iframe
+                    src={`${certificate.file}#page=1&toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                    title={`${certificate.title} certificate preview`}
+                    loading="lazy"
+                    className="w-full h-full border-0 pointer-events-none"
+                  />
                 )}
               </div>
 

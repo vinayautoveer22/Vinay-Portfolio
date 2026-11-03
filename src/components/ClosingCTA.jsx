@@ -1,9 +1,7 @@
 import { ArrowUpRight, MoveUpRight, Sparkles } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData'
-import usePointerParallax from './usePointerParallax'
 
 export default function ClosingCTA() {
-  const characterStageRef = usePointerParallax()
   const whatsappUrl = `https://wa.me/${portfolioData.contact.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(portfolioData.contact.whatsappMessage)}`
 
   return (
@@ -38,7 +36,7 @@ export default function ClosingCTA() {
           </div>
         </div>
 
-        <div ref={characterStageRef} className="closing-cta-visual character-pointer-stage" aria-hidden="true">
+        <div className="closing-cta-visual" aria-hidden="true">
           <div className="closing-cta-art">
             <img src="./character.webp" alt="" loading="lazy" />
           </div>

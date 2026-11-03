@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight, Download, TrendingUp, Sparkles, Target, X, ExternalLink } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
-import usePointerParallax from './usePointerParallax'
 import { portfolioData } from '../data/portfolioData'
 
 /**
@@ -9,7 +8,6 @@ import { portfolioData } from '../data/portfolioData'
  * Introduction, primary calls to action, key stats and portrait on a glass stage.
  */
 export default function Hero() {
-  const characterStageRef = usePointerParallax()
   const [isCvPreviewOpen, setIsCvPreviewOpen] = useState(false)
   const cvUrl = './Vinay%20Kumar%20Resume.pdf'
   const whatsappUrl = `https://wa.me/${portfolioData.contact.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(portfolioData.contact.whatsappMessage)}`
@@ -87,7 +85,7 @@ export default function Hero() {
 
           {/* Right column */}
           <div className="lg:col-span-5 flex justify-center fade-up" style={{ animationDelay: '0.15s' }}>
-            <div ref={characterStageRef} className="hero-character-stage relative w-full max-w-[460px] aspect-square">
+            <div className="hero-character-stage relative w-full max-w-[460px] aspect-square">
               <div className="absolute inset-6 rounded-[40px] glass ring-gradient" />
               <div className="absolute inset-16 rounded-full bg-gradient-to-br from-brand-400/35 via-violet-400/30 to-sky-300/30 blur-3xl" />
               <img
@@ -99,7 +97,7 @@ export default function Hero() {
                 className="hero-character relative w-full h-full object-contain p-6 drop-shadow-[0_30px_40px_rgb(15_23_42/0.22)]"
               />
 
-              <div className="absolute top-10 -left-2 sm:-left-8 glass rounded-2xl p-3 pr-4 flex items-center gap-3 float-slow">
+              <div className="absolute top-10 -left-2 sm:-left-8 glass rounded-2xl p-3 pr-4 flex items-center gap-3">
                 <span className="icon-tile w-10 h-10 rounded-xl">
                   <TrendingUp size={18} />
                 </span>
@@ -109,7 +107,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="absolute bottom-14 -right-2 sm:-right-6 glass rounded-2xl p-3 pr-4 flex items-center gap-3 float-slow" style={{ animationDelay: '1.5s' }}>
+              <div className="absolute bottom-14 -right-2 sm:-right-6 glass rounded-2xl p-3 pr-4 flex items-center gap-3">
                 <span className="icon-tile w-10 h-10 rounded-xl">
                   <Sparkles size={18} />
                 </span>
@@ -119,7 +117,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="absolute -bottom-2 left-8 glass rounded-2xl px-4 py-2.5 flex items-center gap-2.5 float-slow" style={{ animationDelay: '3s' }}>
+              <div className="absolute -bottom-2 left-8 glass rounded-2xl px-4 py-2.5 flex items-center gap-2.5">
                 <Target size={16} className="text-accent" />
                 <span className="text-xs font-semibold text-ink whitespace-nowrap">Lead Generation</span>
               </div>

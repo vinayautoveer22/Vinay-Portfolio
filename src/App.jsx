@@ -16,7 +16,6 @@ import BackToTop from './components/BackToTop'
 import Footer from './components/Footer'
 import ClosingCTA from './components/ClosingCTA'
 import CampaignProcess from './components/CampaignProcess'
-import ScrollMotion from './components/ScrollMotion'
 
 /**
  * Main Portfolio Application Entry Point
@@ -25,7 +24,6 @@ export default function App() {
   return (
       <div className="min-h-screen text-ink flex flex-col">
         <Ambient />
-        <ScrollMotion />
         <Navbar />
 
         <main className="flex-1">
