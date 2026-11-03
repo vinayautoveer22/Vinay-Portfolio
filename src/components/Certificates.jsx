@@ -1,4 +1,4 @@
-import { Award, ExternalLink, FileText } from 'lucide-react'
+import { Award, ExternalLink } from 'lucide-react'
 import SectionHeader from './SectionHeader'
 
 const certificates = [
