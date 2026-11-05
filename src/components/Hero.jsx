@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowRight, Download, TrendingUp, Sparkles, Target, X } from 'lucide-react'
+import { ArrowRight, Eye, TrendingUp, Sparkles, Target, X } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
 import PdfPreview from './PdfPreview'
 import { portfolioData } from '../data/portfolioData'
@@ -63,7 +63,7 @@ export default function Hero() {
                 <ArrowRight size={16} />
               </a>
               <button type="button" onClick={() => setIsCvPreviewOpen(true)} className="btn btn-glass px-7 py-4">
-                <Download size={16} />
+                <Eye size={16} />
                 <span>Preview CV</span>
               </button>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-glass px-7 py-4">

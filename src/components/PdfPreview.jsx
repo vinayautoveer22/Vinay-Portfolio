@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { AlertTriangle } from 'lucide-react'
+import { AlertTriangle, LoaderCircle } from 'lucide-react'
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist'
 import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
 
@@ -97,6 +97,12 @@ export default function PdfPreview({ file, title, thumbnail = false }) {
         </div>
       ) : (
         <>
+          {loading && pageCount === 0 && (
+            <div className="flex h-full min-h-32 flex-col items-center justify-center gap-2 text-sm text-ink-3">
+              <LoaderCircle size={22} className="animate-spin" aria-hidden="true" />
+              <span>Loading {title} preview…</span>
+            </div>
+          )}
           <div className={`flex flex-col items-center ${thumbnail ? 'h-full justify-center gap-2' : 'gap-4 p-3 sm:p-5'}`}>
             {Array.from({ length: pageCount }, (_, index) => (
               <canvas
@@ -109,9 +115,6 @@ export default function PdfPreview({ file, title, thumbnail = false }) {
               />
             ))}
           </div>
-          {loading && (
-            <span className="sr-only">Loading {title} preview</span>
-          )}
         </>
       )}
     </div>
