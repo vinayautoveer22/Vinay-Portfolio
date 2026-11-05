@@ -147,13 +147,13 @@ export default function Hero() {
       </section>
       {isCvPreviewOpen && (
         <div
-          className="fixed inset-0 z-[100] flex flex-col bg-[#08090b]/80 p-2 backdrop-blur-md sm:p-6"
+          className="fixed inset-0 z-[10010] flex flex-col bg-[#08090b]/80 p-2 backdrop-blur-md sm:p-6"
           onClick={(event) => {
             if (event.target === event.currentTarget) setIsCvPreviewOpen(false)
           }}
           role="dialog"
           aria-modal="true"
-          aria-labelledby="cv-preview-title"
+          aria-label="CV Preview"
         >
           <div className="mx-auto flex h-full min-h-0 w-full max-w-5xl flex-col overflow-hidden rounded-xl border border-white/15 bg-[#11111b] shadow-2xl sm:rounded-2xl">
             <PdfPreview
