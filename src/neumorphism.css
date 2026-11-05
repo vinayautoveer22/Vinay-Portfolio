@@ -833,6 +833,16 @@ footer p {
   }
 }
 
+@media (max-width: 220px) {
+  #contact .glass.ring-gradient {
+    padding-inline: 6px !important;
+  }
+
+  #contact select.field {
+    font-size: 10px !important;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
   main > section {
     padding-block: 80px !important;
