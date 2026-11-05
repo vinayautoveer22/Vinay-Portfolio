@@ -80,8 +80,8 @@ export default function Experience() {
             <ul className={`${currentExp.summary ? 'mt-5' : 'mt-7'} space-y-4`}>
               {currentExp.responsibilities.map((resp) => (
                 <li key={resp} className="flex items-start gap-3.5">
-                  <span className="mt-0.5 w-5 h-5 rounded-full bg-brand-50 border border-brand-200 text-brand-600 flex items-center justify-center shrink-0">
-                    <Check size={12} strokeWidth={3} />
+                  <span className="experience-check-badge mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0">
+                    <Check size={13} strokeWidth={3} />
                   </span>
                   <p className="text-ink-2 text-sm sm:text-base leading-relaxed">{resp}</p>
                 </li>

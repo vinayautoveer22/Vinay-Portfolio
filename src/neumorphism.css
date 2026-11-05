@@ -462,6 +462,12 @@ select:focus-visible {
 
 #experience .experience-tab { --experience-accent: 124 92 255 !important; }
 
+#experience .experience-check-badge {
+  color: #15803d !important;
+  background: #fff !important;
+  border: 1px solid #fff !important;
+}
+
 .text-accent,
 [class*="text-cyan-"],
 [class*="text-violet-"],
