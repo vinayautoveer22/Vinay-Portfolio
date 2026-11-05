@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { ArrowRight, Eye, Sparkles, Target, TrendingUp } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
 import PdfPreview from './PdfPreview'
@@ -145,7 +146,7 @@ export default function Hero() {
         </div>
       </div>
       </section>
-      {isCvPreviewOpen && (
+      {isCvPreviewOpen && createPortal(
         <div
           className="fixed inset-0 z-[10010] flex flex-col bg-[#08090b]/80 p-2 backdrop-blur-md sm:p-6"
           onClick={(event) => {
@@ -163,7 +164,8 @@ export default function Hero() {
               onClose={() => setIsCvPreviewOpen(false)}
             />
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   )
