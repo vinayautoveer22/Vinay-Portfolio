@@ -767,6 +767,33 @@ footer p {
     grid-template-columns: minmax(0, 1fr) !important;
   }
 
+  #contact .max-w-7xl {
+    padding-inline: 12px !important;
+  }
+
+  #contact a.card {
+    gap: 10px !important;
+    padding: 12px !important;
+  }
+
+  #contact a.card > .icon-tile {
+    width: 38px !important;
+    height: 38px !important;
+    flex: 0 0 38px;
+  }
+
+  #contact a.card > svg {
+    display: none;
+  }
+
+  #contact .glass.ring-gradient {
+    padding: 12px !important;
+  }
+
+  #contact select.field {
+    font-size: 11px !important;
+  }
+
   .site-navbar-brand > span:last-child > span:first-child {
     font-size: 11px !important;
   }
