@@ -9,9 +9,10 @@ export default function PdfPreview({ file, title, thumbnail = false }) {
   const containerRef = useRef(null)
   const canvasRefs = useRef([])
   const [containerWidth, setContainerWidth] = useState(0)
-  const [pageCount, setPageCount] = useState(0)
+  const [pdf, setPdf] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const pageCount = pdf ? (thumbnail ? 1 : pdf.numPages) : 0
 
   useEffect(() => {
     const container = containerRef.current
@@ -27,19 +28,31 @@ export default function PdfPreview({ file, title, thumbnail = false }) {
   }, [])
 
   useEffect(() => {
-    if (!containerWidth) return undefined
-
     let cancelled = false
     const loadingTask = getDocument(file)
 
-    const renderDocument = async () => {
-      const pdf = await loadingTask.promise
+    loadingTask.promise.then((loadedPdf) => {
+      if (!cancelled) setPdf(loadedPdf)
+    }).catch((previewError) => {
       if (cancelled) return
+      setError(previewError.message || 'This PDF could not be previewed.')
+      setLoading(false)
+    })
 
-      const pagesToRender = thumbnail ? 1 : pdf.numPages
-      setPageCount(pagesToRender)
+    return () => {
+      cancelled = true
+      loadingTask.destroy()
+    }
+  }, [file])
 
-      for (let pageNumber = 1; pageNumber <= pagesToRender; pageNumber += 1) {
+  useEffect(() => {
+    if (!pdf || !containerWidth) return undefined
+
+    let cancelled = false
+    const renderTasks = []
+
+    const renderPages = async () => {
+      for (let pageNumber = 1; pageNumber <= pageCount; pageNumber += 1) {
         const page = await pdf.getPage(pageNumber)
         if (cancelled) return
 
@@ -62,16 +75,15 @@ export default function PdfPreview({ file, title, thumbnail = false }) {
         canvas.style.width = `${viewport.width / pixelRatio}px`
         canvas.style.height = `${viewport.height / pixelRatio}px`
 
-        await page.render({ canvasContext: context, viewport }).promise
+        const renderTask = page.render({ canvasContext: context, viewport })
+        renderTasks.push(renderTask)
+        await renderTask.promise
       }
 
-      if (!cancelled) {
-        setError('')
-        setLoading(false)
-      }
+      if (!cancelled) setLoading(false)
     }
 
-    renderDocument().catch((previewError) => {
+    renderPages().catch((previewError) => {
       if (cancelled) return
       setError(previewError.message || 'This PDF could not be previewed.')
       setLoading(false)
@@ -79,9 +91,9 @@ export default function PdfPreview({ file, title, thumbnail = false }) {
 
     return () => {
       cancelled = true
-      loadingTask.destroy()
+      renderTasks.forEach((renderTask) => renderTask.cancel())
     }
-  }, [containerWidth, file, thumbnail])
+  }, [containerWidth, pageCount, pdf, thumbnail])
 
   return (
     <div
