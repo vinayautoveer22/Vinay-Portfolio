@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { ArrowRight, Download, TrendingUp, Sparkles, Target, X, ExternalLink } from 'lucide-react'
+import { ArrowRight, Download, TrendingUp, Sparkles, Target, X } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
+import PdfDocumentPanel from './PdfDocumentPanel'
 import { portfolioData } from '../data/portfolioData'
 
 /**
@@ -139,40 +140,23 @@ export default function Hero() {
           <div className="mx-auto flex h-full w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-white/15 bg-[#11111b] shadow-2xl">
             <div className="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-3 text-white sm:px-6">
               <h2 id="cv-preview-title" className="font-semibold">CV Preview</h2>
-              <div className="flex items-center gap-2">
-                <a
-                  href={cvUrl}
-                  download
-                  className="btn btn-primary px-4 py-2 text-sm"
-                >
-                  <Download size={16} />
-                  <span>Download CV</span>
-                </a>
-                <a
-                  href={cvUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="arrow-btn !border-white/20 !bg-white/10 !text-white hover:!bg-white/20"
-                  aria-label="Open CV in a new tab"
-                  title="Open in new tab"
-                >
-                  <ExternalLink size={18} />
-                </a>
-                <button
-                  type="button"
-                  onClick={() => setIsCvPreviewOpen(false)}
-                  className="arrow-btn !border-white/20 !bg-white/10 !text-white hover:!bg-white/20"
-                  aria-label="Close CV preview"
-                >
-                  <X size={20} />
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => setIsCvPreviewOpen(false)}
+                className="arrow-btn !border-white/20 !bg-white/10 !text-white hover:!bg-white/20"
+                aria-label="Close CV preview"
+              >
+                <X size={20} />
+              </button>
             </div>
-            <iframe
-              src={`${cvUrl}#view=FitH`}
-              title="Vinay Kumar CV preview"
-              className="min-h-0 flex-1 bg-white"
-            />
+            <div className="flex min-h-0 flex-1 p-3 sm:p-6">
+              <PdfDocumentPanel
+                title="Vinay Kumar Resume"
+                href={cvUrl}
+                description="Curriculum vitae"
+                downloadLabel="Download CV"
+              />
+            </div>
           </div>
         </div>
       )}

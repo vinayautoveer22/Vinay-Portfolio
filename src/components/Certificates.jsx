@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Award, Eye, X } from 'lucide-react'
+import { Award, Eye, FileText, X } from 'lucide-react'
 import SectionHeader from './SectionHeader'
+import PdfDocumentPanel from './PdfDocumentPanel'
 
 const certificates = [
   {
@@ -79,12 +80,11 @@ export default function Certificates() {
                     className="w-full h-full object-contain"
                   />
                 ) : (
-                  <iframe
-                    src={`${certificate.file}#page=1&toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                    title={`${certificate.title} certificate preview`}
-                    loading="lazy"
-                    className="w-full h-full border-0 pointer-events-none"
-                  />
+                  <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-white/[0.04] text-ink-2">
+                    <FileText size={28} strokeWidth={1.7} aria-hidden="true" />
+                    <span className="text-sm font-medium">PDF certificate</span>
+                    <span className="text-xs text-ink-3">Tap below to open</span>
+                  </div>
                 )}
               </div>
 
@@ -139,10 +139,10 @@ export default function Certificates() {
                 className="max-h-full max-w-full rounded-2xl border border-white bg-white object-contain shadow-2xl"
               />
             ) : (
-              <iframe
-                src={`${activeCertificate.file}#toolbar=0&navpanes=0&view=FitH`}
-                title={`${activeCertificate.title} certificate`}
-                className="h-full w-full max-w-5xl rounded-2xl border border-white/20 bg-white shadow-2xl"
+              <PdfDocumentPanel
+                title={activeCertificate.title}
+                href={activeCertificate.file}
+                description={activeCertificate.format}
               />
             )}
           </div>

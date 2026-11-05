@@ -71,9 +71,9 @@ export default function Contact() {
           description="Available for performance campaigns, consulting, and brand work."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start mt-16">
+        <div className="grid min-w-0 grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start mt-16">
           {/* Contact cards */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
+          <div className="min-w-0 lg:col-span-5 flex flex-col gap-4">
             {contactCards.map((c) => (
               <a
                 key={c.label}
@@ -104,7 +104,7 @@ export default function Contact() {
           </div>
 
           {/* Form */}
-          <div className="lg:col-span-7 glass ring-gradient rounded-[28px] p-6 sm:p-10">
+          <div className="min-w-0 lg:col-span-7 glass ring-gradient rounded-[28px] p-6 sm:p-10">
             <h3 className="text-2xl font-bold text-ink">Send a message</h3>
             <p className="mt-1.5 text-sm text-ink-3">
               Share a few details and the conversation opens on WhatsApp.

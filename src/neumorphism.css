@@ -772,6 +772,40 @@ footer p {
   }
 }
 
+@media (max-width: 360px) {
+  main > section .max-w-7xl,
+  main > section .max-w-7xl > .grid,
+  main > section .max-w-7xl > .grid > * {
+    min-width: 0;
+  }
+
+  main > section :is(h1, h2, h3) {
+    overflow-wrap: anywhere;
+  }
+
+  .btn,
+  .closing-cta-button,
+  .closing-cta-work {
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  #contact .field {
+    min-width: 0;
+    max-width: 100%;
+    font-size: 12px !important;
+  }
+
+  #contact .glass.ring-gradient {
+    padding: 16px !important;
+  }
+
+  .pdf-document-panel {
+    padding: 16px !important;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
   main > section {
     padding-block: 80px !important;

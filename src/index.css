@@ -38,9 +38,11 @@
     sans-serif;
 
   --font-display:
-    'Sora',
+    'Inter',
     'Inter',
     system-ui,
+    -apple-system,
+    'Segoe UI',
     sans-serif;
 }
 
