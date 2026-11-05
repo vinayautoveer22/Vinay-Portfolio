@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight, Download, TrendingUp, Sparkles, Target, X } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
-import PdfDocumentPanel from './PdfDocumentPanel'
+import PdfPreview from './PdfPreview'
 import { portfolioData } from '../data/portfolioData'
 
 /**
@@ -150,12 +150,9 @@ export default function Hero() {
               </button>
             </div>
             <div className="flex min-h-0 flex-1 p-3 sm:p-6">
-              <PdfDocumentPanel
-                title="Vinay Kumar Resume"
-                href={cvUrl}
-                description="Curriculum vitae"
-                downloadLabel="Download CV"
-              />
+              <div className="flex min-h-0 w-full flex-1 overflow-hidden rounded-2xl border border-white/20 bg-white">
+                <PdfPreview file={cvUrl} title="Vinay Kumar Resume" />
+              </div>
             </div>
           </div>
         </div>

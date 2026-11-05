@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Award, Eye, FileText, X } from 'lucide-react'
+import { Award, Eye, X } from 'lucide-react'
 import SectionHeader from './SectionHeader'
-import PdfDocumentPanel from './PdfDocumentPanel'
+import PdfPreview from './PdfPreview'
 
 const certificates = [
   {
@@ -80,11 +80,7 @@ export default function Certificates() {
                     className="w-full h-full object-contain"
                   />
                 ) : (
-                  <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-white/[0.04] text-ink-2">
-                    <FileText size={28} strokeWidth={1.7} aria-hidden="true" />
-                    <span className="text-sm font-medium">PDF certificate</span>
-                    <span className="text-xs text-ink-3">Tap below to open</span>
-                  </div>
+                  <PdfPreview file={certificate.file} title={certificate.title} thumbnail />
                 )}
               </div>
 
@@ -139,11 +135,9 @@ export default function Certificates() {
                 className="max-h-full max-w-full rounded-2xl border border-white bg-white object-contain shadow-2xl"
               />
             ) : (
-              <PdfDocumentPanel
-                title={activeCertificate.title}
-                href={activeCertificate.file}
-                description={activeCertificate.format}
-              />
+              <div className="flex min-h-0 w-full max-w-5xl flex-1 overflow-hidden rounded-2xl border border-white/20 bg-white shadow-2xl">
+                <PdfPreview file={activeCertificate.file} title={activeCertificate.title} />
+              </div>
             )}
           </div>
         </div>
