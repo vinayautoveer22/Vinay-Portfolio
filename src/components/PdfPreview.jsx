@@ -22,7 +22,11 @@ export default function PdfPreview({
   const [activePage, setActivePage] = useState(1)
   const [zoom, setZoom] = useState(1)
   const pageCount = pdf ? (thumbnail ? (pageNumber <= pdf.numPages ? 1 : 0) : pdf.numPages) : 0
-  const visiblePages = thumbnail ? [pageNumber] : viewer ? [activePage] : Array.from({ length: pageCount }, (_, index) => index + 1)
+  const canvasPages = thumbnail
+    ? [pageNumber]
+    : viewer
+      ? [activePage]
+      : Array.from({ length: pageCount }, (_, index) => index + 1)
 
   const getCanvas = (index) => canvasRefs.current[index]
 
@@ -67,8 +71,14 @@ export default function PdfPreview({
     const renderTasks = []
 
     const renderPages = async () => {
-      for (let index = 0; index < visiblePages.length; index += 1) {
-        const page = await pdf.getPage(visiblePages[index])
+      const pagesToRender = thumbnail
+        ? [pageNumber]
+        : viewer
+          ? [activePage]
+          : Array.from({ length: pdf.numPages }, (_, index) => index + 1)
+
+      for (let index = 0; index < pagesToRender.length; index += 1) {
+        const page = await pdf.getPage(pagesToRender[index])
         if (cancelled) return
 
         const canvas = getCanvas(index)
@@ -124,7 +134,7 @@ export default function PdfPreview({
         </div>
       )}
       <div className={`flex ${viewer ? 'min-h-full justify-center p-3 sm:p-6' : 'flex-col items-center gap-4 p-3 sm:p-5'}`}>
-        {visiblePages.map((visiblePage, index) => (
+        {canvasPages.map((visiblePage, index) => (
           <canvas
             key={`${file}-${visiblePage}`}
             ref={(canvas) => {
@@ -142,7 +152,7 @@ export default function PdfPreview({
     return (
       <div className="flex h-full min-h-0 min-w-0 flex-col bg-[#1f1f1f] text-white" aria-label={`${title} PDF viewer`}>
         <div className="flex min-h-12 shrink-0 items-center gap-1 border-b border-white/10 bg-[#252525] px-1.5 sm:h-14 sm:gap-2 sm:px-3">
-          <span className="hidden min-w-0 flex-1 truncate pl-2 text-sm font-medium sm:block">{title}</span>
+          <span id="cv-preview-title" className="min-w-0 flex-1 truncate pl-1 text-xs font-medium sm:pl-2 sm:text-sm">{title}</span>
           <div className="flex shrink-0 items-center gap-0.5">
             <button
               type="button"

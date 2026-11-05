@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, Download, ExternalLink, Eye, Sparkles, Target, TrendingUp, X } from 'lucide-react'
+import { ArrowRight, Eye, Sparkles, Target, TrendingUp } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
 import PdfPreview from './PdfPreview'
 import { portfolioData } from '../data/portfolioData'
