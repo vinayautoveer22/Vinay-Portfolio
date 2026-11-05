@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, Download, ExternalLink, Eye, Sparkles, Target, TrendingUp, X } from 'lucide-react'
 import WhatsAppIcon from './WhatsAppIcon'
+import PdfPreview from './PdfPreview'
 import { portfolioData } from '../data/portfolioData'
 
 /**
@@ -9,6 +10,7 @@ import { portfolioData } from '../data/portfolioData'
  */
 export default function Hero() {
   const [isCvPreviewOpen, setIsCvPreviewOpen] = useState(false)
+  const previewHistoryKey = useRef(null)
   const cvUrl = './Vinay%20Kumar%20Resume.pdf'
   const whatsappUrl = `https://wa.me/${portfolioData.contact.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(portfolioData.contact.whatsappMessage)}`
 
@@ -18,13 +20,30 @@ export default function Hero() {
     const closeOnEscape = (event) => {
       if (event.key === 'Escape') setIsCvPreviewOpen(false)
     }
+    const closeOnBack = () => {
+      previewHistoryKey.current = null
+      setIsCvPreviewOpen(false)
+    }
     const previousOverflow = document.body.style.overflow
+    const historyKey = `cv-preview-${Date.now()}`
+    previewHistoryKey.current = historyKey
+    window.history.pushState(
+      { ...window.history.state, portfolioPreviewKey: historyKey },
+      '',
+      window.location.href
+    )
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', closeOnEscape)
+    window.addEventListener('popstate', closeOnBack)
 
     return () => {
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', closeOnEscape)
+      window.removeEventListener('popstate', closeOnBack)
+      if (previewHistoryKey.current === historyKey) {
+        previewHistoryKey.current = null
+        if (window.history.state?.portfolioPreviewKey === historyKey) window.history.back()
+      }
     }
   }, [isCvPreviewOpen])
 
@@ -128,7 +147,7 @@ export default function Hero() {
       </section>
       {isCvPreviewOpen && (
         <div
-          className="fixed inset-0 z-[100] flex flex-col bg-[#08090b]/80 p-3 backdrop-blur-md sm:p-6"
+          className="fixed inset-0 z-[100] flex flex-col bg-[#08090b]/80 p-2 backdrop-blur-md sm:p-6"
           onClick={(event) => {
             if (event.target === event.currentTarget) setIsCvPreviewOpen(false)
           }}
@@ -136,42 +155,12 @@ export default function Hero() {
           aria-modal="true"
           aria-labelledby="cv-preview-title"
         >
-          <div className="mx-auto flex h-full w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-white/15 bg-[#11111b] shadow-2xl">
-            <div className="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-3 text-white sm:px-6">
-              <h2 id="cv-preview-title" className="font-semibold">CV Preview</h2>
-              <div className="flex items-center gap-2">
-                <a
-                  href={cvUrl}
-                  download
-                  className="btn btn-primary px-4 py-2 text-sm"
-                >
-                  <Download size={16} />
-                  <span>Download CV</span>
-                </a>
-                <a
-                  href={cvUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="arrow-btn !border-white/20 !bg-white/10 !text-white hover:!bg-white/20"
-                  aria-label="Open CV in a new tab"
-                  title="Open in new tab"
-                >
-                  <ExternalLink size={18} />
-                </a>
-                <button
-                  type="button"
-                  onClick={() => setIsCvPreviewOpen(false)}
-                  className="arrow-btn !border-white/20 !bg-white/10 !text-white hover:!bg-white/20"
-                  aria-label="Close CV preview"
-                >
-                  <X size={20} />
-                </button>
-              </div>
-            </div>
-            <iframe
-              src={`${cvUrl}#view=FitH`}
-              title="Vinay Kumar CV preview"
-              className="min-h-0 flex-1 bg-white"
+          <div className="mx-auto flex h-full min-h-0 w-full max-w-5xl flex-col overflow-hidden rounded-xl border border-white/15 bg-[#11111b] shadow-2xl sm:rounded-2xl">
+            <PdfPreview
+              file={cvUrl}
+              title="Vinay Kumar Resume"
+              viewer
+              onClose={() => setIsCvPreviewOpen(false)}
             />
           </div>
         </div>
