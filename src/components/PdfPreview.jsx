@@ -32,10 +32,6 @@ export default function PdfPreview({ file, title, thumbnail = false }) {
     let cancelled = false
     const loadingTask = getDocument(file)
 
-    setLoading(true)
-    setError('')
-    setPageCount(0)
-
     const renderDocument = async () => {
       const pdf = await loadingTask.promise
       if (cancelled) return
@@ -69,7 +65,10 @@ export default function PdfPreview({ file, title, thumbnail = false }) {
         await page.render({ canvasContext: context, viewport }).promise
       }
 
-      if (!cancelled) setLoading(false)
+      if (!cancelled) {
+        setError('')
+        setLoading(false)
+      }
     }
 
     renderDocument().catch((previewError) => {
